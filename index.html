@@ -1,10 +1,95 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ═══════════════════════════════════════════════════
+     PRIMARY META — Google Search
+═══════════════════════════════════════════════════ -->
 <title>ARAC International Inc. | Global Peace · Human Rights · SDGs</title>
+<meta name="description" content="ARAC International Inc. is a 501(c)(3) nonprofit advocating for global security, human rights, and peacebuilding through SDG 16 consulting, conflict prevention, and Positive Peace frameworks.">
+<meta name="keywords" content="ARAC International, global peace, human rights, SDG 16, peacebuilding, conflict prevention, humanitarian support, Positive Peace, security risk management, 501c3 nonprofit">
+<meta name="author" content="ARAC International Inc.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="theme-color" content="#8b9a5b">
+<link rel="canonical" href="https://arac-international.org/">
+
+<!-- ═══════════════════════════════════════════════════
+     OPEN GRAPH — Facebook, LinkedIn, WhatsApp, iMessage
+═══════════════════════════════════════════════════ -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arac-international.org/">
+<meta property="og:site_name" content="ARAC International Inc.">
+<meta property="og:title" content="ARAC International Inc. | Global Peace · Human Rights · SDGs">
+<meta property="og:description" content="A 501(c)(3) nonprofit advocating for global security, human rights, and peacebuilding. We advance SDG 16, conflict prevention, and Positive Peace frameworks worldwide.">
+<meta property="og:image" content="https://mnshakoor.github.io/arac-international-main/logos/arac-logo1.jpg">
+<meta property="og:image:alt" content="ARAC International Inc. logo — Global Peace, Human Rights, SDGs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+
+<!-- ═══════════════════════════════════════════════════
+     TWITTER / X CARD
+═══════════════════════════════════════════════════ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ARACInternational">
+<meta name="twitter:creator" content="@mnurishakoor">
+<meta name="twitter:title" content="ARAC International Inc. | Global Peace · Human Rights · SDGs">
+<meta name="twitter:description" content="A 501(c)(3) nonprofit advancing SDG 16, conflict prevention, and Positive Peace frameworks worldwide.">
+<meta name="twitter:image" content="https://mnshakoor.github.io/arac-international-main/logos/arac-logo1.jpg">
+<meta name="twitter:image:alt" content="ARAC International Inc. — Global Peace, Human Rights, SDGs">
+
+<!-- ═══════════════════════════════════════════════════
+     SCHEMA.ORG STRUCTURED DATA — Google Rich Results
+═══════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  "name": "ARAC International Inc.",
+  "alternateName": "ARAC International",
+  "url": "https://arac-international.org",
+  "logo": "https://mnshakoor.github.io/arac-international-main/logos/arac-logo1.jpg",
+  "image": "https://mnshakoor.github.io/arac-international-main/logos/arac-logo1.jpg",
+  "description": "ARAC International Inc. is a 501(c)(3) nonprofit organization dedicated to advocating for global security, human rights, and peacebuilding efforts. We advance SDG 16, conflict prevention, mediation, and Positive Peace frameworks worldwide.",
+  "foundingDate": "2020",
+  "nonprofitStatus": "Nonprofit501c3",
+  "slogan": "For a world of peace, let humanity take the lead.",
+  "areaServed": "Worldwide",
+  "knowsAbout": [
+    "SDG 16 — Peace, Justice and Strong Institutions",
+    "Positive Peace Framework",
+    "Human Rights",
+    "Conflict Prevention",
+    "Peacebuilding",
+    "Security Risk Management",
+    "Humanitarian Support"
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "M. Nuri Shakoor",
+    "jobTitle": "Founder & Senior Research Analyst"
+  },
+  "sameAs": [
+    "https://arac-international.org",
+    "https://mnshakoor.com"
+  ]
+}
+</script>
+
+<!-- ═══════════════════════════════════════════════════
+     FAVICON
+═══════════════════════════════════════════════════ -->
+<link rel="icon" type="image/png" href="https://mnshakoor.github.io/arac-international-main/logos/arac-logo1.jpg">
+<link rel="apple-touch-icon" href="https://mnshakoor.github.io/arac-international-main/logos/arac-logo1.jpg">
+
+<!-- ═══════════════════════════════════════════════════
+     FONTS
+═══════════════════════════════════════════════════ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -76,6 +161,17 @@
   }
 
   .nav-logo-mark svg { width: 24px; height: 24px; fill: white; }
+
+  .nav-logo-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: white;
+    padding: 3px;
+    display: block;
+    flex-shrink: 0;
+  }
 
   .nav-brand-text {
     display: flex;
@@ -1298,6 +1394,18 @@
     max-width: 280px;
   }
 
+  .footer-banner-img {
+    display: block;
+    margin-top: 1.4rem;
+    max-width: 220px;
+    height: auto;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+    border-radius: 4px;
+  }
+
+  .footer-banner-img:hover { opacity: 1; }
+
   .footer-col h5 {
     font-size: 0.7rem;
     font-weight: 700;
@@ -1417,11 +1525,12 @@
 <!-- NAVIGATION -->
 <nav>
   <a href="#" class="nav-brand">
-    <div class="nav-logo-mark">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-      </svg>
-    </div>
+    <img
+      src="https://mnshakoor.github.io/arac-international-main/logos/arac-logo1.jpg"
+      alt="ARAC International"
+      class="nav-logo-img"
+      onerror="this.style.display='none'; this.nextElementSibling.insertAdjacentHTML('beforebegin', '<div class=\'nav-logo-mark\'><svg viewBox=\'0 0 24 24\'><path d=\'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z\'/></svg></div>')"
+    >
     <div class="nav-brand-text">
       <span class="nav-brand-name">ARAC International</span>
       <span class="nav-brand-tagline">Global Peace · Human Rights · SDGs</span>
@@ -1516,11 +1625,12 @@
       <div class="mission-visual">
         <div class="mission-img-wrap">
           <div class="mission-img-inner">
-            <div class="mission-img-fallback">
-              <div class="fallback-name">ARAC</div>
-              <div class="fallback-sub">International</div>
-              <div style="margin-top:0.8rem;font-size:0.7rem;letter-spacing:0.12em;opacity:0.65;text-transform:uppercase;">Global Peace · Human Rights · SDGs</div>
-            </div>
+            <img
+              src="https://mnshakoor.github.io/arac-international-main/logos/arac-logo1.jpg"
+              alt="ARAC International Inc."
+              style="width:410px;height:410px;object-fit:contain;filter:drop-shadow(0 8px 28px rgba(0,0,0,0.18));"
+              onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'mission-img-fallback\'><div class=\'fallback-name\'>ARAC</div><div class=\'fallback-sub\'>International</div><div style=\'margin-top:0.8rem;font-size:0.7rem;letter-spacing:0.12em;opacity:0.65;text-transform:uppercase;\'>Global Peace · Human Rights · SDGs</div></div>'"
+            >
           </div>
         </div>
         <div class="mission-badge">
@@ -1843,7 +1953,7 @@
       <div class="involve-card">
         <span class="involve-icon">📬</span>
         <h3>Stay Informed</h3>
-        <p>Subscribe to our intelligence briefs, research publications, and Flashpoints &amp; Frameworks editorial series covering global security, conflict, and governance dynamics.</p>
+        <p>Subscribe to our strategic briefs, analytic reports, research publications, and Flashpoints &amp; Frameworks editorial series covering global security, conflict, and governance dynamics.</p>
         <a href="#" class="btn-white">Subscribe</a>
       </div>
     </div>
@@ -1887,18 +1997,25 @@
 <footer id="contact">
   <div class="footer-main">
     <div class="footer-brand">
-      <div style="display:flex;align-items:center;gap:0.75rem;">
-        <div class="nav-logo-mark">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="white"/>
-          </svg>
-        </div>
+      <div style="display:flex;align-items:center;gap:0.85rem;">
+        <img
+          src="https://mnshakoor.github.io/arac-international-main/logos/arac-logo1.PNG"
+          alt="ARAC International"
+          style="width:52px;height:52px;border-radius:50%;object-fit:contain;background:white;padding:4px;flex-shrink:0;"
+          onerror="this.style.display='none'"
+        >
         <div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:white;">ARAC International</div>
           <div style="font-size:0.62rem;letter-spacing:0.12em;color:var(--sage-muted);text-transform:uppercase;">Global Peace · Human Rights · SDGs</div>
         </div>
       </div>
       <p>A 501(c)(3) nonprofit organization dedicated to advocating for global security, human rights, and peacebuilding efforts. We strive to foster a safer and more just world through the advancement of Positive Peace.</p>
+      <img
+        src="https://mnshakoor.github.io/arac-international-main/logos/arac-logo1.JPEG"
+        alt="ARAC International — Global Peace · Human Rights · SDGs"
+        class="footer-banner-img"
+        onerror="this.style.display='none'"
+      >
     </div>
 
     <div class="footer-col">
@@ -1926,9 +2043,9 @@
     <div class="footer-col">
       <h5>Get Involved</h5>
       <ul>
-        <li><a href="#">Donate</a></li>
+        <li><a href="https://www.paypal.com/donate/?hosted_button_id=N48F8784BCPEE">Donate</a></li>
         <li><a href="#">Partner With Us</a></li>
-        <li><a href="#">Subscribe</a></li>
+        <li><a href="https://newsletter.arac-international.org">Subscribe</a></li>
         <li><a href="#">Volunteer</a></li>
         <li><a href="#">Contact Us</a></li>
       </ul>
