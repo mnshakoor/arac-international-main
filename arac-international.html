@@ -1,0 +1,1950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARAC International Inc. | Global Peace · Human Rights · SDGs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f4e8;
+    --cream-light: #fafaf0;
+    --sage: #8b9a5b;
+    --sage-dark: #6b7a3e;
+    --sage-mid: #9aaa68;
+    --sage-muted: #b8c485;
+    --sage-bg: #a8b870;
+    --olive: #7a8c4a;
+    --olive-light: #c8d48a;
+    --charcoal: #2a2a22;
+    --charcoal-mid: #3d3d30;
+    --text-dark: #1e1e16;
+    --text-body: #3a3a2e;
+    --text-muted: #6a6a56;
+    --white: #ffffff;
+    --gold-accent: #c8a400;
+    --border-light: rgba(139, 154, 91, 0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--cream-light);
+    color: var(--text-body);
+    overflow-x: hidden;
+  }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(42, 42, 34, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(139, 154, 91, 0.3);
+    padding: 0 2.5rem;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+
+  .nav-logo-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--sage) 0%, var(--sage-dark) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .nav-logo-mark svg { width: 24px; height: 24px; fill: white; }
+
+  .nav-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .nav-brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-brand-tagline {
+    font-size: 0.6rem;
+    font-weight: 300;
+    color: var(--sage-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    list-style: none;
+  }
+
+  .nav-links a, .nav-dropdown > span {
+    display: block;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.82);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .nav-links a:hover, .nav-dropdown > span:hover {
+    color: var(--white);
+    background: rgba(139,154,91,0.2);
+  }
+
+  .nav-dropdown {
+    position: relative;
+  }
+
+  .nav-dropdown > span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .nav-dropdown > span::after {
+    content: '▾';
+    font-size: 0.65rem;
+    opacity: 0.7;
+  }
+
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: var(--charcoal);
+    border: 1px solid rgba(139,154,91,0.25);
+    border-radius: 6px;
+    min-width: 200px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    z-index: 100;
+  }
+
+  .nav-dropdown:hover .dropdown-menu { display: block; }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 0.65rem 1.1rem;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.78);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    border-radius: 0;
+    transition: all 0.2s;
+  }
+
+  .dropdown-menu a:hover {
+    background: rgba(139,154,91,0.2);
+    color: var(--white);
+  }
+
+  .nav-cta {
+    background: var(--sage) !important;
+    color: white !important;
+    border-radius: 4px !important;
+    padding: 0.5rem 1.1rem !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--sage-dark) !important;
+  }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--charcoal);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(139,154,91,0.12) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(168,184,112,0.08) 0%, transparent 60%);
+  }
+
+  .hero-wave {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 120px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8rem 2.5rem 6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-text {}
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sage-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--sage-muted);
+  }
+
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight: 600;
+    line-height: 1.12;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--sage-muted);
+  }
+
+  .hero-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.55);
+    border-left: 2px solid var(--sage);
+    padding-left: 1.2rem;
+    margin: 1.8rem 0 2.2rem;
+    line-height: 1.65;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--sage);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+    border: 2px solid var(--sage);
+  }
+
+  .btn-primary:hover {
+    background: var(--sage-dark);
+    border-color: var(--sage-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(107,122,62,0.4);
+  }
+
+  .btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: rgba(255,255,255,0.85);
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+    border: 2px solid rgba(255,255,255,0.3);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--sage-muted);
+    color: var(--white);
+    background: rgba(139,154,91,0.12);
+  }
+
+  .hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hero-stat-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(139,154,91,0.2);
+    border-left: 3px solid var(--sage);
+    border-radius: 6px;
+    padding: 1.5rem 1.8rem;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s;
+  }
+
+  .hero-stat-card:hover {
+    background: rgba(139,154,91,0.08);
+    transform: translateX(4px);
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--sage-muted);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .stat-desc {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.4);
+    margin-top: 0.3rem;
+    line-height: 1.5;
+  }
+
+  /* ── SCROLLING TICKER ── */
+  .ticker-wrap {
+    background: var(--sage);
+    padding: 0.85rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-track {
+    display: inline-flex;
+    gap: 0;
+    animation: ticker 30s linear infinite;
+  }
+
+  .ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: white;
+    padding: 0 2.5rem;
+  }
+
+  .ticker-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    flex-shrink: 0;
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── SECTION DEFAULTS ── */
+  section { position: relative; }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2.5rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background: var(--sage);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+  }
+
+  .section-lead {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    max-width: 600px;
+  }
+
+  /* ── MISSION SECTION ── */
+  .mission-section {
+    background: var(--cream-light);
+  }
+
+  .mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .mission-visual {
+    position: relative;
+    padding-bottom: 3rem; /* room for badge overflow */
+  }
+
+  .mission-img-wrap {
+    position: relative;
+    border-radius: 8px;
+    overflow: visible;
+    width: 100%;
+    padding-top: 75%; /* 4:3 ratio via padding trick, avoids aspect-ratio bugs */
+    background: linear-gradient(135deg, var(--sage-bg) 0%, var(--olive) 100%);
+  }
+
+  .mission-img-inner {
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--sage-bg) 0%, var(--olive) 100%);
+  }
+
+  .mission-img-inner img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.15));
+  }
+
+  .mission-img-fallback {
+    text-align: center;
+    color: white;
+  }
+
+  .mission-img-fallback .fallback-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+
+  .mission-img-fallback .fallback-sub {
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    margin-top: 0.5rem;
+    opacity: 0.85;
+    text-transform: uppercase;
+  }
+
+  .mission-badge {
+    position: absolute;
+    bottom: 0;
+    right: -1rem;
+    background: var(--charcoal);
+    color: white;
+    border-radius: 8px;
+    padding: 1rem 1.3rem;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    border: 1px solid rgba(139,154,91,0.35);
+    z-index: 2;
+  }
+
+  .mission-badge .badge-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--sage-muted);
+    line-height: 1;
+  }
+
+  .mission-badge .badge-text {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 0.25rem;
+    white-space: nowrap;
+  }
+
+  .mission-pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+    margin-top: 2rem;
+  }
+
+  .pillar-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-light);
+    background: white;
+    transition: all 0.25s;
+  }
+
+  .pillar-item:hover {
+    border-color: var(--sage);
+    box-shadow: 0 4px 16px rgba(139,154,91,0.12);
+    transform: translateY(-2px);
+  }
+
+  .pillar-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    background: rgba(139,154,91,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1rem;
+  }
+
+  .pillar-text strong {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.2rem;
+  }
+
+  .pillar-text span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* ── SERVICES SECTION ── */
+  .services-section {
+    background: var(--charcoal);
+  }
+
+  .services-section .section-title { color: white; }
+  .services-section .section-lead { color: rgba(255,255,255,0.55); }
+  .services-section .section-label { color: var(--sage-muted); }
+  .services-section .section-label::before { background: var(--sage-muted); }
+
+  .services-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 4rem;
+  }
+
+  .services-header .section-lead {
+    max-width: 100%;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(139,154,91,0.15);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    min-width: 0; /* prevent grid blowout */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--sage), var(--sage-muted));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-card:hover {
+    background: rgba(139,154,91,0.07);
+    border-color: rgba(139,154,91,0.35);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+  }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    color: var(--sage);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.2rem;
+  }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: rgba(139,154,91,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .service-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.7rem;
+    line-height: 1.3;
+  }
+
+  .service-desc {
+    font-size: 0.83rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+  }
+
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.2rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage-muted);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .service-link:hover {
+    color: var(--white);
+    gap: 0.7rem;
+  }
+
+  /* ── IMPACT SECTION ── */
+  .impact-section {
+    background: linear-gradient(160deg, var(--sage-bg) 0%, var(--olive) 100%);
+  }
+
+  .impact-section .section-title { color: white; }
+  .impact-section .section-lead { color: rgba(255,255,255,0.8); max-width: 100%; }
+  .impact-section .section-label { color: rgba(255,255,255,0.7); }
+  .impact-section .section-label::before { background: rgba(255,255,255,0.5); }
+
+  .impact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .impact-numbers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .impact-num-card {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .impact-num-card .big-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: white;
+    line-height: 1;
+    display: block;
+  }
+
+  .impact-num-card .num-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-top: 0.4rem;
+    display: block;
+  }
+
+  .sdg-showcase {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    padding: 2rem;
+    backdrop-filter: blur(8px);
+  }
+
+  .sdg-showcase-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 1.5rem;
+  }
+
+  .sdg-grid-mini {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.7rem;
+  }
+
+  .sdg-cell {
+    background: #1976D2;
+    border-radius: 5px;
+    padding: 0.6rem 0.4rem;
+    text-align: center;
+    color: white;
+    font-size: 0.6rem;
+    font-weight: 700;
+    line-height: 1.2;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+  }
+
+  .sdg-cell.sdg-16 { background: linear-gradient(135deg, #00689d 0%, #004f75 100%); font-size: 0.72rem; }
+  .sdg-cell.sdg-17 { background: linear-gradient(135deg, #19486a 0%, #0d2b40 100%); }
+  .sdg-cell.sdg-10 { background: linear-gradient(135deg, #dd1367 0%, #a00c4c 100%); }
+  .sdg-cell.sdg-1 { background: linear-gradient(135deg, #e5243b 0%, #b31a2b 100%); }
+  .sdg-cell.sdg-5 { background: linear-gradient(135deg, #ff3a21 0%, #cc2d18 100%); }
+  .sdg-cell.sdg-8 { background: linear-gradient(135deg, #a21942 0%, #7a1231 100%); }
+  .sdg-cell.sdg-11 { background: linear-gradient(135deg, #fd9d24 0%, #cc7a14 100%); }
+  .sdg-cell.sdg-13 { background: linear-gradient(135deg, #3f7e44 0%, #2c5a30 100%); }
+
+  /* ── POSITIVE PEACE SECTION ── */
+  .peace-section {
+    background: var(--cream-light);
+  }
+
+  .peace-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .peace-diagram {
+    position: relative;
+    height: 420px;
+  }
+
+  .peace-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90px;
+    height: 90px;
+    background: var(--sage);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.3;
+    z-index: 5;
+    box-shadow: 0 8px 32px rgba(139,154,91,0.35);
+  }
+
+  .peace-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px dashed rgba(139,154,91,0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .orbit-1 { width: 200px; height: 200px; animation: rotate 20s linear infinite; }
+  .orbit-2 { width: 340px; height: 340px; animation: rotate 32s linear infinite reverse; }
+
+  @keyframes rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  .peace-node {
+    position: absolute;
+    background: white;
+    border: 2px solid var(--sage);
+    border-radius: 50px;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.67rem;
+    font-weight: 600;
+    color: var(--olive);
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    transform: translate(-50%, -50%);
+  }
+
+  /* Orbit 1 nodes */
+  .n1 { top: 50%; left: 50%; transform: translate(-50%, calc(-50% - 100px)); }
+  .n2 { top: 50%; left: 50%; transform: translate(calc(-50% + 100px), -50%); }
+  .n3 { top: 50%; left: 50%; transform: translate(-50%, calc(-50% + 100px)); }
+  .n4 { top: 50%; left: 50%; transform: translate(calc(-50% - 100px), -50%); }
+
+  /* Orbit 2 nodes */
+  .n5 { top: 50%; left: 50%; transform: translate(calc(-50% + 140px), calc(-50% - 80px)); }
+  .n6 { top: 50%; left: 50%; transform: translate(calc(-50% - 140px), calc(-50% - 80px)); }
+  .n7 { top: 50%; left: 50%; transform: translate(calc(-50% + 140px), calc(-50% + 80px)); }
+  .n8 { top: 50%; left: 50%; transform: translate(calc(-50% - 140px), calc(-50% + 80px)); }
+
+  .peace-points {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .peace-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.2rem;
+    border-radius: 6px;
+    background: white;
+    border: 1px solid var(--border-light);
+    transition: all 0.25s;
+  }
+
+  .peace-point:hover {
+    border-color: var(--sage);
+    box-shadow: 0 4px 20px rgba(139,154,91,0.1);
+  }
+
+  .peace-point-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--sage);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .peace-point-body strong {
+    display: block;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.3rem;
+  }
+
+  .peace-point-body p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  /* ── QUOTE SECTION ── */
+  .quote-section {
+    background: var(--charcoal-mid);
+    padding: 5rem 2.5rem;
+  }
+
+  .quote-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .quote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6rem;
+    color: var(--sage);
+    line-height: 0.6;
+    display: block;
+    margin-bottom: 1.5rem;
+    opacity: 0.6;
+  }
+
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+    font-style: italic;
+    color: white;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .quote-attribution {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--sage-muted);
+    text-transform: uppercase;
+  }
+
+  .quote-creds {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .cred-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(139,154,91,0.2);
+    border-radius: 6px;
+    padding: 0.9rem 1.4rem;
+    text-align: center;
+    min-width: 130px;
+  }
+
+  .cred-item span {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .cred-item strong {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--sage-muted);
+    margin-top: 0.2rem;
+  }
+
+  /* ── HUMANITARIAN / DISPLACEMENT ── */
+  .humanitarian-section {
+    background: var(--cream-light);
+  }
+
+  .humanitarian-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .displacement-card {
+    background: var(--charcoal);
+    border-radius: 10px;
+    padding: 2rem;
+    color: white;
+  }
+
+  .displacement-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(139,154,91,0.3);
+  }
+
+  .disp-stat-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .disp-country {
+    width: 130px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    flex-shrink: 0;
+  }
+
+  .disp-bar-wrap {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .disp-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--sage), var(--sage-muted));
+    border-radius: 3px;
+    transition: width 1.5s ease;
+  }
+
+  .disp-num {
+    font-size: 0.72rem;
+    color: var(--sage-muted);
+    min-width: 60px;
+    text-align: right;
+  }
+
+  .econ-violence {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(139,154,91,0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .econ-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--sage-muted);
+  }
+
+  .econ-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  .econ-source {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.3);
+    margin-top: 0.5rem;
+  }
+
+  /* ── GET INVOLVED ── */
+  .involve-section {
+    background: linear-gradient(135deg, var(--sage-bg) 0%, var(--olive) 50%, var(--sage-dark) 100%);
+  }
+
+  .involve-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2.5rem;
+  }
+
+  .involve-section .section-title { color: white; }
+  .involve-section .section-label { color: rgba(255,255,255,0.7); }
+  .involve-section .section-label::before { background: rgba(255,255,255,0.5); }
+
+  .involve-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .involve-card {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s;
+  }
+
+  .involve-card:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  }
+
+  .involve-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .involve-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.8rem;
+  }
+
+  .involve-card p {
+    font-size: 0.83rem;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.65;
+    margin-bottom: 1.8rem;
+  }
+
+  .btn-white {
+    display: inline-block;
+    background: white;
+    color: var(--olive);
+    padding: 0.75rem 1.8rem;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+
+  .btn-white:hover {
+    background: var(--cream-light);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+
+  /* ── PARTNERS ── */
+  .partners-section {
+    background: white;
+    padding: 4rem 2.5rem;
+  }
+
+  .partners-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .partners-label {
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .partners-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .partner-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    opacity: 0.55;
+    transition: opacity 0.2s;
+    cursor: default;
+  }
+
+  .partner-item:hover { opacity: 1; }
+
+  .partner-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--sage);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  .partner-name {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--charcoal);
+    border-top: 1px solid rgba(139,154,91,0.2);
+  }
+
+  .footer-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2.5rem 3rem;
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .footer-brand p {
+    font-size: 0.83rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+    margin-top: 1.2rem;
+    max-width: 280px;
+  }
+
+  .footer-col h5 {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sage-muted);
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer-col ul a {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-col ul a:hover { color: rgba(255,255,255,0.9); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-bottom p {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .social-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    background: rgba(139,154,91,0.15);
+    border: 1px solid rgba(139,154,91,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-weight: 700;
+  }
+
+  .social-btn:hover {
+    background: var(--sage);
+    color: white;
+    border-color: var(--sage);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-text > * {
+    animation: fadeUp 0.7s ease both;
+  }
+
+  .hero-text > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-text > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero-text > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero-text > *:nth-child(4) { animation-delay: 0.55s; }
+  .hero-stats { animation: fadeUp 0.8s ease 0.4s both; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+
+    .hero-content { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .mission-grid,
+    .impact-grid,
+    .peace-content,
+    .humanitarian-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+    .services-header { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .involve-cards { grid-template-columns: 1fr; }
+    .mission-pillars { grid-template-columns: 1fr; }
+    .impact-numbers { grid-template-columns: 1fr 1fr; }
+    .sdg-grid-mini { grid-template-columns: repeat(4, 1fr); }
+
+    .footer-main { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .mission-badge { right: 0.5rem; }
+    .mission-visual { padding-bottom: 2.5rem; }
+    .peace-diagram { height: 320px; }
+    .orbit-2 { width: 280px; height: 280px; }
+    .n5,  .n7 { transform: translate(calc(-50% + 110px), calc(-50% - 60px)); }
+    .n6, .n8 { transform: translate(calc(-50% - 110px), calc(-50% + 60px)); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-logo-mark">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+      </svg>
+    </div>
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">ARAC International</span>
+      <span class="nav-brand-tagline">Global Peace · Human Rights · SDGs</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li class="nav-dropdown">
+      <span>Programs</span>
+      <div class="dropdown-menu">
+        <a href="#services">SDG 16 Advocacy</a>
+        <a href="#peace">Conflict Prevention</a>
+        <a href="#humanitarian">Humanitarian Support</a>
+        <a href="#education">Continuing Education</a>
+      </div>
+    </li>
+    <li><a href="#impact">Our Impact</a></li>
+    <li><a href="#resources">Resources</a></li>
+    <li><a href="#involve">Get Involved</a></li>
+    <li><a href="#contact" class="nav-cta">Support Us</a></li>
+  </ul>
+
+  <div class="nav-hamburger" onclick="this.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-eyebrow">501(c)(3) Nonprofit · Est. 2020</div>
+      <h1 class="hero-headline">For a world of peace,<br><em>let humanity take the lead.</em></h1>
+      <blockquote class="hero-quote">Advocating for global security, human rights, and peacebuilding through structured frameworks, evidence-based research, and community empowerment.</blockquote>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">Our Programs</a>
+        <a href="#involve" class="btn-outline">Get Involved</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat-card">
+        <div class="stat-number">$17.5T</div>
+        <div class="stat-label">Economic Cost of Violence (2022)</div>
+        <div class="stat-desc">Global Peace Index, Institute for Economics and Peace</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="stat-number">35.7M</div>
+        <div class="stat-label">Displaced Persons in Africa</div>
+        <div class="stat-desc">Concentrated across Sudan, DRC, Ethiopia, Somalia</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="stat-number">SDG 16</div>
+        <div class="stat-label">Peace, Justice & Strong Institutions</div>
+        <div class="stat-desc">The core UN framework driving ARAC's advocacy mandate</div>
+      </div>
+    </div>
+  </div>
+  <svg class="hero-wave" viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none">
+    <path d="M0,60 C360,120 1080,0 1440,60 L1440,120 L0,120 Z" fill="#f5f4e8"/>
+  </svg>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item">Global Peace Advocacy <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Human Rights Education <span class="ticker-dot"></span></span>
+    <span class="ticker-item">SDG 16 Consulting <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Conflict Prevention &amp; Mediation <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Humanitarian Support Initiatives <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Positive Peace Framework <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Security Risk Management <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Community Empowerment <span class="ticker-dot"></span></span>
+    <!-- duplicated for seamless loop -->
+    <span class="ticker-item">Global Peace Advocacy <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Human Rights Education <span class="ticker-dot"></span></span>
+    <span class="ticker-item">SDG 16 Consulting <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Conflict Prevention &amp; Mediation <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Humanitarian Support Initiatives <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Positive Peace Framework <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Security Risk Management <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Community Empowerment <span class="ticker-dot"></span></span>
+  </div>
+</div>
+
+<!-- MISSION -->
+<section class="mission-section" id="about">
+  <div class="section-inner">
+    <div class="mission-grid">
+      <div class="mission-visual">
+        <div class="mission-img-wrap">
+          <div class="mission-img-inner">
+            <div class="mission-img-fallback">
+              <div class="fallback-name">ARAC</div>
+              <div class="fallback-sub">International</div>
+              <div style="margin-top:0.8rem;font-size:0.7rem;letter-spacing:0.12em;opacity:0.65;text-transform:uppercase;">Global Peace · Human Rights · SDGs</div>
+            </div>
+          </div>
+        </div>
+        <div class="mission-badge">
+          <div class="badge-num">501c3</div>
+          <div class="badge-text">Registered Nonprofit</div>
+        </div>
+      </div>
+      <div>
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">Advancing Sustainable Peace Through Principled Action</h2>
+        <p class="section-lead">ARAC International is a 501(c)(3) nonprofit organization dedicated to advocating for global security, human rights, and peacebuilding efforts. Our approach to addressing complex international challenges is to advocate for the institutions and structures that foster Positive Peace.</p>
+        <p class="section-lead" style="margin-top:1rem;">We believe that sustainable peace and security can be attained through the advancement of human rights and proactive engagement in conflict resolution. We strive to effect enduring transformations by empowering local communities, influencing global policies, and nurturing a culture that prioritizes peace.</p>
+
+        <div class="mission-pillars">
+          <div class="pillar-item">
+            <div class="pillar-icon">🕊️</div>
+            <div class="pillar-text">
+              <strong>Positive Peace</strong>
+              <span>Building the attitudes, institutions, and structures that create peace</span>
+            </div>
+          </div>
+          <div class="pillar-item">
+            <div class="pillar-icon">⚖️</div>
+            <div class="pillar-text">
+              <strong>Human Rights</strong>
+              <span>Integrating rights-based principles into organizational practice</span>
+            </div>
+          </div>
+          <div class="pillar-item">
+            <div class="pillar-icon">🌍</div>
+            <div class="pillar-text">
+              <strong>SDG Alignment</strong>
+              <span>Connecting local action to the UN 2030 Sustainable Development agenda</span>
+            </div>
+          </div>
+          <div class="pillar-item">
+            <div class="pillar-icon">🔬</div>
+            <div class="pillar-text">
+              <strong>Evidence-Based</strong>
+              <span>Research-grounded analysis from structured intelligence tradecraft</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="section-inner">
+    <div class="services-header">
+      <div>
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Programs &amp; Services</h2>
+      </div>
+      <p class="section-lead">Through collaboration across borders, advocacy for policy reforms, and support for communities affected by conflict and injustice, we promote understanding and create positive change on a global scale.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-icon">⚖️</div>
+        <div class="service-title">SDG 16 Advocacy &amp; Consulting</div>
+        <p class="service-desc">We work closely with organizations and governments to enhance access to justice, promote transparent and accountable institutions, and advance SDG 16 objectives through tailored strategies and deep expertise.</p>
+        <a href="#" class="service-link">Learn More →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-icon">🤝</div>
+        <div class="service-title">Conflict Prevention &amp; Mediation</div>
+        <p class="service-desc">Advocates for integrating conflict prevention programs and mediation into global frameworks. We invest in early warning systems, promote dialogue, and support capacity-building initiatives to prevent escalation.</p>
+        <a href="#" class="service-link">Learn More →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-icon">📚</div>
+        <div class="service-title">Continuing Education</div>
+        <p class="service-desc">Fostering dialogue with organizations and businesses to align their missions with the Positive Peace Framework developed by the Institute for Economics and Peace (IEP), with practical implementation tools.</p>
+        <a href="#" class="service-link">Learn More →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-icon">🛡️</div>
+        <div class="service-title">Humanitarian Support</div>
+        <p class="service-desc">Specialized technical support and security risk management consulting to support humanitarian efforts worldwide, enhancing global security through in-depth research and awareness initiatives.</p>
+        <a href="#" class="service-link">Learn More →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-icon">🔎</div>
+        <div class="service-title">Security Risk Management</div>
+        <p class="service-desc">Applying structured analytic tradecraft and the Quanta Analytica Process to provide organizations with defensible, evidence-led security assessments, NGO risk frameworks, and operational guidance.</p>
+        <a href="#" class="service-link">Learn More →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-icon">📡</div>
+        <div class="service-title">Research &amp; Intelligence</div>
+        <p class="service-desc">Producing structured intelligence assessments and geopolitical risk products for institutional audiences, integrating OSINT methodologies with systems-oriented analytical frameworks.</p>
+        <a href="#" class="service-link">Learn More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact-section" id="impact">
+  <div class="section-inner">
+    <div class="impact-grid">
+      <div>
+        <div class="section-label">Our Impact</div>
+        <h2 class="section-title">Building a More Peaceful, Just World</h2>
+        <p class="section-lead">Investing in institutions that promote peace and human rights helps prevent conflicts and instability. It fosters understanding, cooperation, and respect between communities and nations.</p>
+
+        <div class="impact-numbers">
+          <div class="impact-num-card">
+            <span class="big-num">8</span>
+            <span class="num-label">SDG Focus Areas</span>
+          </div>
+          <div class="impact-num-card">
+            <span class="big-num">4+</span>
+            <span class="num-label">Continents Active</span>
+          </div>
+          <div class="impact-num-card">
+            <span class="big-num">IEP</span>
+            <span class="num-label">Ambassador Program</span>
+          </div>
+          <div class="impact-num-card">
+            <span class="big-num">INSSA</span>
+            <span class="num-label">Member Organization</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sdg-showcase">
+        <div class="sdg-showcase-title">SDGs We Advance</div>
+        <div class="sdg-grid-mini">
+          <div class="sdg-cell sdg-16">SDG 16<br>Peace &amp; Justice</div>
+          <div class="sdg-cell sdg-1">SDG 1<br>No Poverty</div>
+          <div class="sdg-cell sdg-5">SDG 5<br>Gender Equality</div>
+          <div class="sdg-cell sdg-8">SDG 8<br>Decent Work</div>
+          <div class="sdg-cell sdg-10">SDG 10<br>Reduced Inequalities</div>
+          <div class="sdg-cell sdg-11">SDG 11<br>Sustainable Cities</div>
+          <div class="sdg-cell sdg-13">SDG 13<br>Climate Action</div>
+          <div class="sdg-cell sdg-17">SDG 17<br>Partnerships</div>
+        </div>
+        <div style="margin-top:1.5rem; padding:1rem; background:rgba(255,255,255,0.08); border-radius:6px; text-align:center;">
+          <div style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.4rem;">Primary Focus</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:white;font-weight:600;">SDG 16: Peace, Justice and Strong Institutions</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POSITIVE PEACE -->
+<section class="peace-section" id="peace">
+  <div class="section-inner">
+    <div class="peace-content">
+      <div>
+        <div class="section-label">Framework</div>
+        <h2 class="section-title">Advocates for Conflict Prevention &amp; Mediation with Positive Peace</h2>
+        <p class="section-lead">The Positive Peace Framework, developed by the Institute for Economics and Peace, identifies the attitudes, institutions, and structures that create and sustain peaceful societies.</p>
+
+        <div class="peace-points">
+          <div class="peace-point">
+            <div class="peace-point-num">1</div>
+            <div class="peace-point-body">
+              <strong>Early Warning Systems</strong>
+              <p>Identifying and addressing potential sources of tension before they escalate into full-blown conflicts through systematic monitoring and structured analytic frameworks.</p>
+            </div>
+          </div>
+          <div class="peace-point">
+            <div class="peace-point-num">2</div>
+            <div class="peace-point-body">
+              <strong>Mediation Integration</strong>
+              <p>Facilitating dialogue between conflicting parties and helping them reach mutually acceptable solutions, preventing further escalation of violence and building sustainable peace.</p>
+            </div>
+          </div>
+          <div class="peace-point">
+            <div class="peace-point-num">3</div>
+            <div class="peace-point-body">
+              <strong>Global Framework Advocacy</strong>
+              <p>Advocating for the integration of conflict prevention programs into international frameworks to ensure coordinated, strategic, and resourced approaches to peacebuilding.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="peace-diagram">
+        <div class="peace-orbit orbit-1"></div>
+        <div class="peace-orbit orbit-2"></div>
+        <div class="peace-center">Positive<br>Peace</div>
+
+        <div class="peace-node n1">Well Functioning Government</div>
+        <div class="peace-node n2">Free Flow of Information</div>
+        <div class="peace-node n3">High Human Capital</div>
+        <div class="peace-node n4">Sound Business Environment</div>
+        <div class="peace-node n5">Equitable Distribution</div>
+        <div class="peace-node n6">Low Corruption</div>
+        <div class="peace-node n7">Good Relations with Neighbours</div>
+        <div class="peace-node n8">Acceptance of Rights</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="quote-inner">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">Investing in institutions that promote peace and human rights helps prevent conflicts and instability. It fosters understanding, cooperation, and respect between communities and nations, creating a more peaceful world for future generations. Supporting these mechanisms is vital for building a harmonious and just global society.</p>
+    <div class="quote-attribution">M. Nuri Shakoor &nbsp;·&nbsp; Founder &amp; Senior Research Analyst, ARAC International Inc.</div>
+
+    <div class="quote-creds">
+      <div class="cred-item">
+        <span>Certified by</span>
+        <strong>US Institute of Diplomacy &amp; Human Rights</strong>
+      </div>
+      <div class="cred-item">
+        <span>Ambassador</span>
+        <strong>IEP Ambassador Program</strong>
+      </div>
+      <div class="cred-item">
+        <span>Member</span>
+        <strong>INSSA</strong>
+      </div>
+      <div class="cred-item">
+        <span>Partner</span>
+        <strong>IOSI Global</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HUMANITARIAN -->
+<section class="humanitarian-section" id="humanitarian">
+  <div class="section-inner">
+    <div class="humanitarian-grid">
+      <div>
+        <div class="section-label">Humanitarian Support</div>
+        <h2 class="section-title">Addressing Global Displacement &amp; Security Needs</h2>
+        <p class="section-lead">At ARAC International Inc., we specialize in providing technical support and security risk management consulting to support humanitarian efforts worldwide. Our dedicated team is committed to enhancing global security through in-depth research and awareness initiatives.</p>
+        <div style="margin-top:2rem;">
+          <a href="#" class="btn-primary" style="background:var(--sage);border-color:var(--sage);">Learn More</a>
+        </div>
+      </div>
+
+      <div class="displacement-card">
+        <h4>Countries with Highest Displacement in Africa</h4>
+        <div class="disp-stat-row">
+          <div class="disp-country">Total Displaced (Africa)</div>
+          <div class="disp-bar-wrap"><div class="disp-bar" style="width:100%"></div></div>
+          <div class="disp-num">35.7M</div>
+        </div>
+        <div class="disp-stat-row">
+          <div class="disp-country">DRC</div>
+          <div class="disp-bar-wrap"><div class="disp-bar" style="width:82%"></div></div>
+          <div class="disp-num">6.3M</div>
+        </div>
+        <div class="disp-stat-row">
+          <div class="disp-country">Ethiopia</div>
+          <div class="disp-bar-wrap"><div class="disp-bar" style="width:72%"></div></div>
+          <div class="disp-num">4.7M</div>
+        </div>
+        <div class="disp-stat-row">
+          <div class="disp-country">South Sudan</div>
+          <div class="disp-bar-wrap"><div class="disp-bar" style="width:71%"></div></div>
+          <div class="disp-num">4.6M</div>
+        </div>
+        <div class="disp-stat-row">
+          <div class="disp-country">Sudan</div>
+          <div class="disp-bar-wrap"><div class="disp-bar" style="width:62%"></div></div>
+          <div class="disp-num">3.9M</div>
+        </div>
+        <div class="disp-stat-row">
+          <div class="disp-country">Somalia</div>
+          <div class="disp-bar-wrap"><div class="disp-bar" style="width:58%"></div></div>
+          <div class="disp-num">3.7M</div>
+        </div>
+        <div class="disp-stat-row">
+          <div class="disp-country">Nigeria</div>
+          <div class="disp-bar-wrap"><div class="disp-bar" style="width:55%"></div></div>
+          <div class="disp-num">3.5M</div>
+        </div>
+
+        <div class="econ-violence">
+          <div class="econ-num">$17.5T</div>
+          <div class="econ-label">Economic Impact of Violence (2022)</div>
+          <div class="econ-source">Source: Global Peace Index 2023 — Institute for Economics and Peace (IEP)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GET INVOLVED -->
+<section class="involve-section" id="involve">
+  <div class="involve-inner">
+    <div class="section-label" style="color:rgba(255,255,255,0.7)">
+      <span style="background:rgba(255,255,255,0.5);display:block;width:20px;height:1.5px;"></span>
+      Take Action
+    </div>
+    <h2 class="section-title" style="color:white;max-width:500px;">Join the Movement for Global Peace</h2>
+
+    <div class="involve-cards">
+      <div class="involve-card">
+        <span class="involve-icon">🌐</span>
+        <h3>Become a Partner</h3>
+        <p>Collaborate with ARAC International to advance SDG 16 and Positive Peace objectives. We partner with NGOs, governments, academic institutions, and private sector organizations.</p>
+        <a href="#" class="btn-white">Partner With Us</a>
+      </div>
+      <div class="involve-card">
+        <span class="involve-icon">💛</span>
+        <h3>Support Our Mission</h3>
+        <p>Your contribution directly funds peacebuilding advocacy, security risk management for humanitarian organizations, and education programs advancing human rights worldwide.</p>
+        <a href="#" class="btn-white">Donate Now</a>
+      </div>
+      <div class="involve-card">
+        <span class="involve-icon">📬</span>
+        <h3>Stay Informed</h3>
+        <p>Subscribe to our intelligence briefs, research publications, and Flashpoints &amp; Frameworks editorial series covering global security, conflict, and governance dynamics.</p>
+        <a href="#" class="btn-white">Subscribe</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="partners-section">
+  <div class="partners-inner">
+    <div class="partners-label">Affiliations &amp; Partners</div>
+    <div class="partners-logos">
+      <div class="partner-item">
+        <div class="partner-icon">IEP</div>
+        <div class="partner-name">IEP Ambassador</div>
+      </div>
+      <div class="partner-item">
+        <div class="partner-icon">INSSA</div>
+        <div class="partner-name">INSSA</div>
+      </div>
+      <div class="partner-item">
+        <div class="partner-icon">IOSI</div>
+        <div class="partner-name">IOSI Global</div>
+      </div>
+      <div class="partner-item">
+        <div class="partner-icon" style="font-size:0.6rem;">USIDR</div>
+        <div class="partner-name">US Inst. Diplomacy</div>
+      </div>
+      <div class="partner-item">
+        <div class="partner-icon">LBS</div>
+        <div class="partner-name">Lladner Business Solutions</div>
+      </div>
+      <div class="partner-item">
+        <div class="partner-icon">MNS</div>
+        <div class="partner-name">MNS Consulting</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="white"/>
+          </svg>
+        </div>
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:white;">ARAC International</div>
+          <div style="font-size:0.62rem;letter-spacing:0.12em;color:var(--sage-muted);text-transform:uppercase;">Global Peace · Human Rights · SDGs</div>
+        </div>
+      </div>
+      <p>A 501(c)(3) nonprofit organization dedicated to advocating for global security, human rights, and peacebuilding efforts. We strive to foster a safer and more just world through the advancement of Positive Peace.</p>
+    </div>
+
+    <div class="footer-col">
+      <h5>Programs</h5>
+      <ul>
+        <li><a href="#">SDG 16 Advocacy</a></li>
+        <li><a href="#">Conflict Prevention</a></li>
+        <li><a href="#">Humanitarian Support</a></li>
+        <li><a href="#">Continuing Education</a></li>
+        <li><a href="#">Security Risk Management</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5>Organization</h5>
+      <ul>
+        <li><a href="#">About ARAC</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Partners</a></li>
+        <li><a href="#">Research &amp; Reports</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5>Get Involved</h5>
+      <ul>
+        <li><a href="#">Donate</a></li>
+        <li><a href="#">Partner With Us</a></li>
+        <li><a href="#">Subscribe</a></li>
+        <li><a href="#">Volunteer</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom" style="max-width:1200px;margin:0 auto;width:100%;">
+    <p>© 2024 ARAC International Inc. All rights reserved. · arac-international.org</p>
+    <div class="footer-social">
+      <a href="#" class="social-btn" title="LinkedIn">in</a>
+      <a href="#" class="social-btn" title="Twitter/X">𝕏</a>
+      <a href="#" class="social-btn" title="Facebook">f</a>
+      <a href="#" class="social-btn" title="Instagram">◎</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
