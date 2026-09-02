@@ -10,7 +10,7 @@
 ═══════════════════════════════════════════════════ -->
 <title>ARAC International Inc. | Global Peace · Human Rights · SDGs</title>
 <meta name="description" content="ARAC International Inc. is a 501(c)(3) nonprofit advocating for global security, human rights, and peacebuilding through SDG 16 consulting, conflict prevention, and Positive Peace frameworks.">
-<meta name="keywords" content="ARAC International, global peace, human rights, SDG 16, peacebuilding, conflict prevention, mediation, humanitarian support, Positive Peace, NGO safety and security risk management, continuing education, research and analysis, 501c3 nonprofit">
+<meta name="keywords" content="ARAC International, THINK media literacy, digital literacy, information resilience, global peace, human rights, SDG 16, peacebuilding, conflict prevention, mediation, humanitarian support, Positive Peace, NGO safety and security risk management, continuing education, research and analysis, 501c3 nonprofit">
 <meta name="author" content="ARAC International Inc.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" content="#8b9a5b">
@@ -67,7 +67,9 @@
     "Safety and Security Risk Management",
     "Humanitarian Support",
     "Continuing Education",
-    "Research and Analysis"
+    "Research and Analysis",
+    "Media and Digital Literacy",
+    "Information Resilience"
   ],
   "founder": {
     "@type": "Person",
@@ -78,6 +80,7 @@
     "https://arac-international.org",
     "https://global.arac-international.org/about",
     "https://discover.arac-international.org/information",
+    "https://think.arac-international.org",
     "https://quanta-analytica.com",
     "https://mnshakoor.com",
     "https://iosi.global"
@@ -1335,28 +1338,36 @@
   }
 
   .partners-logos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 1.75rem 1rem;
+    align-items: start;
+    justify-items: center;
+    max-width: 1080px;
+    margin: 0 auto;
   }
 
   .partner-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4rem;
-    opacity: 0.55;
+    opacity: 0.6;
     transition: opacity 0.2s;
-    cursor: default;
+    width: 100%;
   }
 
   .partner-item:hover { opacity: 1; }
 
+  .partner-item a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    color: inherit;
+    padding: 0.35rem 0.15rem;
+  }
+
   .partner-icon {
-    width: 44px;
-    height: 44px;
+    width: 52px;
+    height: 52px;
     background: var(--sage);
     border-radius: 8px;
     display: flex;
@@ -1364,17 +1375,23 @@
     justify-content: center;
     color: white;
     font-weight: 800;
-    font-size: 0.75rem;
-    letter-spacing: 0.05em;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    flex-shrink: 0;
   }
 
+  .partner-icon.is-long { font-size: 0.58rem; }
+
   .partner-name {
-    font-size: 0.7rem;
+    font-size: 0.66rem;
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     color: var(--text-muted);
     text-transform: uppercase;
     text-align: center;
+    line-height: 1.45;
+    max-width: 13ch;
   }
 
   /* ── FOOTER ── */
@@ -1484,6 +1501,74 @@
   section[id], footer[id] { scroll-margin-top: 86px; }
   .involve-section .section-label span { display: none !important; }
 
+  @media (max-width: 1080px) and (min-width: 769px) {
+    .partners-logos { grid-template-columns: repeat(4, minmax(0,1fr)); }
+  }
+
+  /* -- THINK INITIATIVE -- */
+  .think-section {
+    background: var(--charcoal-mid);
+    padding: 5.5rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .think-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 78% 40%, rgba(168,184,112,0.14) 0%, transparent 62%);
+  }
+  .think-inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; }
+  .think-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 4rem; align-items: center; }
+  .think-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--sage-muted); margin-bottom: 1.1rem;
+  }
+  .think-eyebrow::before { content: ''; display: block; width: 26px; height: 1.5px; background: var(--sage); }
+  .think-wordmark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.6rem, 6vw, 3.9rem);
+    font-weight: 300; color: var(--white); line-height: 1;
+    letter-spacing: 0.06em; margin-bottom: 0.4rem;
+  }
+  .think-domain {
+    font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--olive-light); margin-bottom: 1.6rem;
+  }
+  .think-section h2 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300;
+    font-size: clamp(1.5rem, 2.8vw, 2rem); color: var(--white);
+    line-height: 1.25; margin-bottom: 1.2rem;
+  }
+  .think-section p {
+    font-size: 0.98rem; line-height: 1.85; color: rgba(255,255,255,0.72);
+    margin-bottom: 1.1rem; max-width: 560px;
+  }
+  .think-quote {
+    border-left: 2px solid var(--sage);
+    padding: 0.3rem 0 0.3rem 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-style: italic;
+    color: var(--olive-light); line-height: 1.5;
+    margin: 1.8rem 0;
+  }
+  .think-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 1.9rem; }
+  .think-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .think-pillar {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(184,196,133,0.18);
+    border-radius: 8px; padding: 1.4rem 1.3rem;
+    transition: all 0.25s;
+  }
+  .think-pillar:hover { background: rgba(255,255,255,0.09); border-color: var(--sage); transform: translateY(-2px); }
+  .think-pillar-icon { font-size: 1.3rem; display: block; margin-bottom: 0.6rem; }
+  .think-pillar strong {
+    display: block; font-family: 'Cormorant Garamond', serif;
+    font-size: 1.08rem; font-weight: 600; color: var(--white); margin-bottom: 0.3rem;
+  }
+  .think-pillar span { font-size: 0.82rem; line-height: 1.6; color: rgba(255,255,255,0.6); }
+
   /* -- MOBILE PANEL -- */
   .mobile-panel {
     display: none; position: fixed; top: 70px; left: 0; right: 0; z-index: 999;
@@ -1506,7 +1591,6 @@
   .dropdown-divider { height: 1px; background: rgba(139,154,91,0.22); margin: 0.25rem 0; }
   .nav-dropdown:focus-within .dropdown-menu { display: block; }
   .nav-hamburger { background: none; border: 0; }
-  .partner-item a { text-decoration: none; color: inherit; display: block; }
 
   /* -- ANIMATIONS -- */
   @keyframes fadeUp {
@@ -1544,6 +1628,9 @@
     .impact-numbers { grid-template-columns: 1fr 1fr; }
     .sdg-grid-mini { grid-template-columns: repeat(4, 1fr); }
 
+    .partners-logos { grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1.5rem 0.75rem; }
+    .think-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+    .think-pillars { grid-template-columns: 1fr 1fr !important; }
     .footer-main { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .mission-badge { right: 0.5rem; }
     .mission-visual { padding-bottom: 2.5rem; }
@@ -1588,6 +1675,7 @@
     </li>
     <li><a href="#impact">Our Impact</a></li>
     <li><a href="https://discover.arac-international.org/information">Resources</a></li>
+    <li><a href="#think">THINK</a></li>
     <li><a href="#involve">Get Involved</a></li>
     <li><a href="https://www.paypal.com/donate/?hosted_button_id=N48F8784BCPEE" class="nav-cta">Support Us</a></li>
   </ul>
@@ -1609,6 +1697,7 @@
   <span class="mp-label">More</span>
   <a href="#impact">Our Impact</a>
   <a href="https://discover.arac-international.org/information">Resources</a>
+  <a href="#think">THINK Initiative</a>
   <a href="https://global.arac-international.org/about">Mission &amp; Vision</a>
   <a href="#involve">Get Involved</a>
   <a href="https://www.paypal.com/donate/?hosted_button_id=N48F8784BCPEE">Support Us</a>
@@ -1661,6 +1750,7 @@
     <span class="ticker-item">Humanitarian Support Initiatives <span class="ticker-dot"></span></span>
     <span class="ticker-item">Positive Peace Framework <span class="ticker-dot"></span></span>
     <span class="ticker-item">Safety &amp; Security Risk Management <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Media &amp; Digital Literacy <span class="ticker-dot"></span></span>
     <span class="ticker-item">Community Empowerment <span class="ticker-dot"></span></span>
     <!-- duplicated for seamless loop -->
     <span class="ticker-item">Global Peace Advocacy <span class="ticker-dot"></span></span>
@@ -1670,6 +1760,7 @@
     <span class="ticker-item">Humanitarian Support Initiatives <span class="ticker-dot"></span></span>
     <span class="ticker-item">Positive Peace Framework <span class="ticker-dot"></span></span>
     <span class="ticker-item">Safety &amp; Security Risk Management <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Media &amp; Digital Literacy <span class="ticker-dot"></span></span>
     <span class="ticker-item">Community Empowerment <span class="ticker-dot"></span></span>
   </div>
 </div>
@@ -1995,6 +2086,60 @@
   </div>
 </section>
 
+<!-- THINK: PUBLIC LEARNING INITIATIVE -->
+<section class="think-section" id="think">
+  <div class="think-inner">
+    <div class="think-grid">
+      <div>
+        <div class="think-eyebrow">Public Service Initiative</div>
+        <div class="think-wordmark">THINK</div>
+        <div class="think-domain">think.arac-international.org</div>
+        <h2>Media and Digital Literacy, Free and Open to Everyone</h2>
+        <p>THINK is ARAC International's public service education initiative. It offers free, openly accessible learning on media literacy, digital literacy, critical thinking, AI literacy, and information resilience, written for general readers rather than for specialists.</p>
+        <p>The reasoning behind it is the same reasoning behind our conflict prevention work. Information environments shape what communities believe is happening, what they fear, and how they respond. Where circulating claims go unexamined, tension escalates faster and reconciliation takes longer. Building the habit of examining a claim before acting on it is prevention work carried out at the level of the individual reader.</p>
+        <blockquote class="think-quote">We do not tell you what to think. We help you think about information.</blockquote>
+        <div class="think-actions">
+          <a href="https://think.arac-international.org" class="btn-primary" style="background:var(--sage);border-color:var(--sage);">Visit THINK</a>
+          <a href="https://newsletter.arac-international.org/subscribe" class="btn-outline">Get Updates</a>
+        </div>
+      </div>
+
+      <div class="think-pillars">
+        <div class="think-pillar">
+          <span class="think-pillar-icon">&#128269;</span>
+          <strong>Media Literacy</strong>
+          <span>Reading a news story for what it establishes, what it implies, and what it leaves out.</span>
+        </div>
+        <div class="think-pillar">
+          <span class="think-pillar-icon">&#128241;</span>
+          <strong>Digital Literacy</strong>
+          <span>Navigating platforms, algorithms, and online sources with a working understanding of how they shape what you see.</span>
+        </div>
+        <div class="think-pillar">
+          <span class="think-pillar-icon">&#129504;</span>
+          <strong>Critical Thinking</strong>
+          <span>Practical reasoning habits: testing a claim, weighing evidence, and recognising the shape of a weak argument.</span>
+        </div>
+        <div class="think-pillar">
+          <span class="think-pillar-icon">&#129302;</span>
+          <strong>AI Literacy</strong>
+          <span>Understanding what generative systems do well, where they fail, and how synthetic content circulates.</span>
+        </div>
+        <div class="think-pillar">
+          <span class="think-pillar-icon">&#128737;</span>
+          <strong>Information Resilience</strong>
+          <span>Recognising manipulation and coordinated influence, and holding steady under pressure to react.</span>
+        </div>
+        <div class="think-pillar">
+          <span class="think-pillar-icon">&#127793;</span>
+          <strong>Free and Open</strong>
+          <span>No fee, no account, no barrier. THINK is published as a public good by a 501(c)(3) nonprofit.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- GET INVOLVED -->
 <section class="involve-section" id="involve">
   <div class="involve-inner">
@@ -2042,7 +2187,7 @@
       </div>
       <div class="partner-item">
         <a href="https://inssa.org/about-us/" target="_blank" rel="noopener">
-          <div class="partner-icon" style="font-size:0.6rem;">INSSA</div>
+          <div class="partner-icon is-long">INSSA</div>
           <div class="partner-name">INSSA</div>
         </a>
       </div>
@@ -2054,8 +2199,8 @@
       </div>
       <div class="partner-item">
         <a href="https://usidhr.org/" target="_blank" rel="noopener">
-          <div class="partner-icon" style="font-size:0.6rem;">USIDHR</div>
-          <div class="partner-name">US Inst. Diplomacy &amp; Human Rights</div>
+          <div class="partner-icon is-long">USIDHR</div>
+          <div class="partner-name">USIDHR</div>
         </a>
       </div>
       <div class="partner-item">
@@ -2065,15 +2210,15 @@
         </a>
       </div>
       <div class="partner-item">
-        <a href="https://mnshakoor.com" target="_blank" rel="noopener">
-          <div class="partner-icon">MNS</div>
-          <div class="partner-name">MNS Consulting</div>
-        </a>
-      </div>
-      <div class="partner-item">
         <a href="https://quanta-analytica.com" target="_blank" rel="noopener">
           <div class="partner-icon">QA</div>
           <div class="partner-name">Quanta Analytica</div>
+        </a>
+      </div>
+      <div class="partner-item">
+        <a href="https://mnshakoor.com" target="_blank" rel="noopener">
+          <div class="partner-icon">MNS</div>
+          <div class="partner-name">MNS Consulting</div>
         </a>
       </div>
     </div>
@@ -2121,6 +2266,7 @@
       <h5>Organization</h5>
       <ul>
         <li><a href="https://global.arac-international.org/about">About ARAC</a></li>
+        <li><a href="https://think.arac-international.org">THINK Initiative</a></li>
         <li><a href="https://discover.arac-international.org/information">Learn More</a></li>
         <li><a href="https://iosi.global">IOSI Global</a></li>
         <li><a href="http://www.lladner.com/about.html">Lladner Business Solutions</a></li>
