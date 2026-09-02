@@ -10,7 +10,7 @@
 ═══════════════════════════════════════════════════ -->
 <title>ARAC International Inc. | Global Peace · Human Rights · SDGs</title>
 <meta name="description" content="ARAC International Inc. is a 501(c)(3) nonprofit advocating for global security, human rights, and peacebuilding through SDG 16 consulting, conflict prevention, and Positive Peace frameworks.">
-<meta name="keywords" content="ARAC International, global peace, human rights, SDG 16, peacebuilding, conflict prevention, humanitarian support, Positive Peace, security risk management, 501c3 nonprofit">
+<meta name="keywords" content="ARAC International, global peace, human rights, SDG 16, peacebuilding, conflict prevention, mediation, humanitarian support, Positive Peace, NGO safety and security risk management, continuing education, research and analysis, 501c3 nonprofit">
 <meta name="author" content="ARAC International Inc.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" content="#8b9a5b">
@@ -64,8 +64,10 @@
     "Human Rights",
     "Conflict Prevention",
     "Peacebuilding",
-    "Security Risk Management",
-    "Humanitarian Support"
+    "Safety and Security Risk Management",
+    "Humanitarian Support",
+    "Continuing Education",
+    "Research and Analysis"
   ],
   "founder": {
     "@type": "Person",
@@ -74,7 +76,11 @@
   },
   "sameAs": [
     "https://arac-international.org",
-    "https://mnshakoor.com"
+    "https://global.arac-international.org/about",
+    "https://discover.arac-international.org/information",
+    "https://quanta-analytica.com",
+    "https://mnshakoor.com",
+    "https://iosi.global"
   ]
 }
 </script>
@@ -1474,7 +1480,35 @@
     border-color: var(--sage);
   }
 
-  /* ── ANIMATIONS ── */
+
+  section[id], footer[id] { scroll-margin-top: 86px; }
+  .involve-section .section-label span { display: none !important; }
+
+  /* -- MOBILE PANEL -- */
+  .mobile-panel {
+    display: none; position: fixed; top: 70px; left: 0; right: 0; z-index: 999;
+    background: var(--charcoal); border-bottom: 1px solid rgba(139,154,91,0.3);
+    padding: 1rem 1.5rem 1.75rem; max-height: calc(100vh - 70px); overflow-y: auto;
+  }
+  .mobile-panel.open { display: block; }
+  .mobile-panel a {
+    display: block; padding: 0.7rem 0.25rem; color: rgba(255,255,255,0.8);
+    text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .mobile-panel a:hover { color: #fff; }
+  .mobile-panel .mp-label {
+    font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--sage-muted); padding: 1rem 0.25rem 0.35rem; display: block;
+  }
+  .mobile-panel .mp-sub { padding-left: 1rem; font-size: 0.85rem; }
+  .dropdown-menu { min-width: 268px; }
+  .dropdown-menu a.is-current { background: rgba(139,154,91,0.28); color: #fff; }
+  .dropdown-divider { height: 1px; background: rgba(139,154,91,0.22); margin: 0.25rem 0; }
+  .nav-dropdown:focus-within .dropdown-menu { display: block; }
+  .nav-hamburger { background: none; border: 0; }
+  .partner-item a { text-decoration: none; color: inherit; display: block; }
+
+  /* -- ANIMATIONS -- */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -1524,7 +1558,7 @@
 
 <!-- NAVIGATION -->
 <nav>
-  <a href="#" class="nav-brand">
+  <a href="index.html" class="nav-brand">
     <img
       src="https://mnshakoor.github.io/arac-international-main/logos/arac-logo1.jpg"
       alt="ARAC International"
@@ -1540,24 +1574,45 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li class="nav-dropdown">
-      <span>Programs</span>
+      <span tabindex="0">Programs</span>
       <div class="dropdown-menu">
-        <a href="#services">SDG 16 Advocacy</a>
-        <a href="#peace">Conflict Prevention</a>
-        <a href="#humanitarian">Humanitarian Support</a>
-        <a href="#education">Continuing Education</a>
+        <a href="programs/sdg-16-advocacy.html">SDG 16 Advocacy &amp; Consulting</a>
+        <a href="programs/conflict-prevention.html">Conflict Prevention &amp; Mediation</a>
+        <a href="programs/continuing-education.html">Continuing Education</a>
+        <a href="programs/humanitarian-support.html">Humanitarian Support</a>
+        <a href="programs/safety-security-risk-management.html">Safety &amp; Security Risk Management</a>
+        <a href="programs/research-analysis.html">Research &amp; Analysis</a>
+        <div class="dropdown-divider"></div>
+        <a href="#services">All Programs Overview</a>
       </div>
     </li>
     <li><a href="#impact">Our Impact</a></li>
-    <li><a href="#resources">Resources</a></li>
+    <li><a href="https://discover.arac-international.org/information">Resources</a></li>
     <li><a href="#involve">Get Involved</a></li>
-    <li><a href="#contact" class="nav-cta">Support Us</a></li>
+    <li><a href="https://www.paypal.com/donate/?hosted_button_id=N48F8784BCPEE" class="nav-cta">Support Us</a></li>
   </ul>
 
-  <div class="nav-hamburger" onclick="this.classList.toggle('open')">
+  <button class="nav-hamburger" aria-label="Menu" aria-expanded="false" onclick="var p=document.getElementById('mobilePanel');var o=p.classList.toggle('open');this.setAttribute('aria-expanded',o);">
     <span></span><span></span><span></span>
-  </div>
+  </button>
 </nav>
+
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#about">About ARAC</a>
+  <span class="mp-label">Programs</span>
+  <a class="mp-sub" href="programs/sdg-16-advocacy.html">SDG 16 Advocacy &amp; Consulting</a>
+  <a class="mp-sub" href="programs/conflict-prevention.html">Conflict Prevention &amp; Mediation</a>
+  <a class="mp-sub" href="programs/continuing-education.html">Continuing Education</a>
+  <a class="mp-sub" href="programs/humanitarian-support.html">Humanitarian Support</a>
+  <a class="mp-sub" href="programs/safety-security-risk-management.html">Safety &amp; Security Risk Management</a>
+  <a class="mp-sub" href="programs/research-analysis.html">Research &amp; Analysis</a>
+  <span class="mp-label">More</span>
+  <a href="#impact">Our Impact</a>
+  <a href="https://discover.arac-international.org/information">Resources</a>
+  <a href="https://global.arac-international.org/about">Mission &amp; Vision</a>
+  <a href="#involve">Get Involved</a>
+  <a href="https://www.paypal.com/donate/?hosted_button_id=N48F8784BCPEE">Support Us</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -1569,6 +1624,7 @@
       <blockquote class="hero-quote">Advocating for global security, human rights, and peacebuilding through structured frameworks, evidence-based research, and community empowerment.</blockquote>
       <div class="hero-actions">
         <a href="#services" class="btn-primary">Our Programs</a>
+        <a href="https://global.arac-international.org/about" class="btn-outline">Our Mission &amp; Vision</a>
         <a href="#involve" class="btn-outline">Get Involved</a>
       </div>
     </div>
@@ -1604,7 +1660,7 @@
     <span class="ticker-item">Conflict Prevention &amp; Mediation <span class="ticker-dot"></span></span>
     <span class="ticker-item">Humanitarian Support Initiatives <span class="ticker-dot"></span></span>
     <span class="ticker-item">Positive Peace Framework <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Security Risk Management <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Safety &amp; Security Risk Management <span class="ticker-dot"></span></span>
     <span class="ticker-item">Community Empowerment <span class="ticker-dot"></span></span>
     <!-- duplicated for seamless loop -->
     <span class="ticker-item">Global Peace Advocacy <span class="ticker-dot"></span></span>
@@ -1613,7 +1669,7 @@
     <span class="ticker-item">Conflict Prevention &amp; Mediation <span class="ticker-dot"></span></span>
     <span class="ticker-item">Humanitarian Support Initiatives <span class="ticker-dot"></span></span>
     <span class="ticker-item">Positive Peace Framework <span class="ticker-dot"></span></span>
-    <span class="ticker-item">Security Risk Management <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Safety &amp; Security Risk Management <span class="ticker-dot"></span></span>
     <span class="ticker-item">Community Empowerment <span class="ticker-dot"></span></span>
   </div>
 </div>
@@ -1644,6 +1700,11 @@
         <p class="section-lead">ARAC International is a 501(c)(3) nonprofit organization dedicated to advocating for global security, human rights, and peacebuilding efforts. Our approach to addressing complex international challenges is to advocate for the institutions and structures that foster Positive Peace.</p>
         <p class="section-lead" style="margin-top:1rem;">We believe that sustainable peace and security can be attained through the advancement of human rights and proactive engagement in conflict resolution. We strive to effect enduring transformations by empowering local communities, influencing global policies, and nurturing a culture that prioritizes peace.</p>
 
+        <div style="margin-top:1.6rem;display:flex;flex-wrap:wrap;gap:0.8rem;">
+          <a href="https://global.arac-international.org/about" class="btn-primary">Read Our Mission &amp; Vision</a>
+          <a href="https://discover.arac-international.org/information" class="btn-outline" style="color:var(--sage-dark);border-color:var(--sage);">Learn More</a>
+        </div>
+
         <div class="mission-pillars">
           <div class="pillar-item">
             <div class="pillar-icon">🕊️</div>
@@ -1670,7 +1731,7 @@
             <div class="pillar-icon">🔬</div>
             <div class="pillar-text">
               <strong>Evidence-Based</strong>
-              <span>Research-grounded analysis from structured intelligence tradecraft</span>
+              <span>Research-grounded analysis built on transparent, traceable evidence</span>
             </div>
           </div>
         </div>
@@ -1693,46 +1754,51 @@
     <div class="services-grid">
       <div class="service-card">
         <div class="service-num">01</div>
-        <div class="service-icon">⚖️</div>
+        <div class="service-icon">&#9878;&#65039;</div>
         <div class="service-title">SDG 16 Advocacy &amp; Consulting</div>
-        <p class="service-desc">We work closely with organizations and governments to enhance access to justice, promote transparent and accountable institutions, and advance SDG 16 objectives through tailored strategies and deep expertise.</p>
-        <a href="#" class="service-link">Learn More →</a>
+        <p class="service-desc">We work with organizations and public institutions to widen access to justice, strengthen transparent and accountable institutions, and turn SDG 16 commitments into programme design that communities and funders can both follow.</p>
+        <a href="programs/sdg-16-advocacy.html" class="service-link">Learn More &rarr;</a>
       </div>
       <div class="service-card">
         <div class="service-num">02</div>
-        <div class="service-icon">🤝</div>
+        <div class="service-icon">&#129309;</div>
         <div class="service-title">Conflict Prevention &amp; Mediation</div>
-        <p class="service-desc">Advocates for integrating conflict prevention programs and mediation into global frameworks. We invest in early warning systems, promote dialogue, and support capacity-building initiatives to prevent escalation.</p>
-        <a href="#" class="service-link">Learn More →</a>
+        <p class="service-desc">We advocate for prevention and mediation to be built into global frameworks, and we support the practical structures behind them: community early warning practice, dialogue design, and local mediation capacity that lasts.</p>
+        <a href="programs/conflict-prevention.html" class="service-link">Learn More &rarr;</a>
       </div>
       <div class="service-card">
         <div class="service-num">03</div>
-        <div class="service-icon">📚</div>
+        <div class="service-icon">&#128218;</div>
         <div class="service-title">Continuing Education</div>
-        <p class="service-desc">Fostering dialogue with organizations and businesses to align their missions with the Positive Peace Framework developed by the Institute for Economics and Peace (IEP), with practical implementation tools.</p>
-        <a href="#" class="service-link">Learn More →</a>
+        <p class="service-desc">Training that helps organizations align their work with the Positive Peace framework developed by the Institute for Economics and Peace, alongside human rights, mediation, and media literacy learning for teams and communities.</p>
+        <a href="programs/continuing-education.html" class="service-link">Learn More &rarr;</a>
       </div>
       <div class="service-card">
         <div class="service-num">04</div>
-        <div class="service-icon">🛡️</div>
+        <div class="service-icon">&#128737;&#65039;</div>
         <div class="service-title">Humanitarian Support</div>
-        <p class="service-desc">Specialized technical support and security risk management consulting to support humanitarian efforts worldwide, enhancing global security through in-depth research and awareness initiatives.</p>
-        <a href="#" class="service-link">Learn More →</a>
+        <p class="service-desc">Technical support for humanitarian organizations serving displaced and conflict affected populations, covering access planning, duty of care, community acceptance practice, and clear operational reporting.</p>
+        <a href="programs/humanitarian-support.html" class="service-link">Learn More &rarr;</a>
       </div>
       <div class="service-card">
         <div class="service-num">05</div>
-        <div class="service-icon">🔎</div>
-        <div class="service-title">Security Risk Management</div>
-        <p class="service-desc">Applying structured analytic tradecraft and the Quanta Analytica Process to provide organizations with defensible, evidence-led security assessments, NGO risk frameworks, and operational guidance.</p>
-        <a href="#" class="service-link">Learn More →</a>
+        <div class="service-icon">&#128737;</div>
+        <div class="service-title">Safety &amp; Security Risk Management</div>
+        <p class="service-desc">Practical safety and security support for nonprofit and humanitarian teams: plain language risk assessments, safety planning, staff briefings, and duty of care frameworks sized to what a small organization can genuinely maintain.</p>
+        <a href="programs/safety-security-risk-management.html" class="service-link">Learn More &rarr;</a>
       </div>
       <div class="service-card">
         <div class="service-num">06</div>
-        <div class="service-icon">📡</div>
-        <div class="service-title">Research &amp; Intelligence</div>
-        <p class="service-desc">Producing structured intelligence assessments and geopolitical risk products for institutional audiences, integrating OSINT methodologies with systems-oriented analytical frameworks.</p>
-        <a href="#" class="service-link">Learn More →</a>
+        <div class="service-icon">&#128225;</div>
+        <div class="service-title">Research &amp; Analysis</div>
+        <p class="service-desc">Evidence based research on conflict, governance, and humanitarian conditions for nonprofit and policy audiences, produced through the Quanta Analytica structured research process so that every judgement can be traced and checked.</p>
+        <a href="programs/research-analysis.html" class="service-link">Learn More &rarr;</a>
       </div>
+    </div>
+
+    <div style="margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:0.85rem;">
+      <a href="https://discover.arac-international.org/information" class="btn-primary">Explore Our Resources</a>
+      <a href="mailto:info@arac-international.org" class="btn-outline" style="color:var(--sage-dark);border-color:var(--sage);">Partner With Us</a>
     </div>
   </div>
 </section>
@@ -1874,9 +1940,10 @@
       <div>
         <div class="section-label">Humanitarian Support</div>
         <h2 class="section-title">Addressing Global Displacement &amp; Security Needs</h2>
-        <p class="section-lead">At ARAC International Inc., we specialize in providing technical support and security risk management consulting to support humanitarian efforts worldwide. Our dedicated team is committed to enhancing global security through in-depth research and awareness initiatives.</p>
-        <div style="margin-top:2rem;">
-          <a href="#" class="btn-primary" style="background:var(--sage);border-color:var(--sage);">Learn More</a>
+        <p class="section-lead">At ARAC International Inc., we provide technical support and safety and security risk management advice to humanitarian organizations worldwide. Our work is grounded in evidence based research and in practical support for the teams delivering assistance in difficult conditions.</p>
+        <div style="margin-top:2rem;display:flex;flex-wrap:wrap;gap:0.85rem;">
+          <a href="programs/humanitarian-support.html" class="btn-primary" style="background:var(--sage);border-color:var(--sage);">Humanitarian Support Programme</a>
+          <a href="programs/safety-security-risk-management.html" class="btn-outline" style="color:var(--sage-dark);border-color:var(--sage);">Safety &amp; Security Risk Management</a>
         </div>
       </div>
 
@@ -1921,7 +1988,7 @@
         <div class="econ-violence">
           <div class="econ-num">$17.5T</div>
           <div class="econ-label">Economic Impact of Violence (2022)</div>
-          <div class="econ-source">Source: Global Peace Index 2023 — Institute for Economics and Peace (IEP)</div>
+          <div class="econ-source">Source: Global Peace Index 2023, Institute for Economics and Peace (IEP)</div>
         </div>
       </div>
     </div>
@@ -1936,25 +2003,27 @@
       Take Action
     </div>
     <h2 class="section-title" style="color:white;max-width:500px;">Join the Movement for Global Peace</h2>
+    <p style="color:rgba(255,255,255,0.88);max-width:620px;margin-bottom:0.5rem;font-size:0.98rem;line-height:1.75;">Read our full mission statement and vision for ARAC International, then choose the route that fits you best.</p>
+    <div style="margin-bottom:2.2rem;"><a href="https://global.arac-international.org/about" class="btn-white">Our Mission &amp; Vision</a></div>
 
     <div class="involve-cards">
       <div class="involve-card">
         <span class="involve-icon">🌐</span>
         <h3>Become a Partner</h3>
         <p>Collaborate with ARAC International to advance SDG 16 and Positive Peace objectives. We partner with NGOs, governments, academic institutions, and private sector organizations.</p>
-        <a href="#" class="btn-white">Partner With Us</a>
+        <a href="mailto:info@arac-international.org" class="btn-white">Partner With Us</a>
       </div>
       <div class="involve-card">
         <span class="involve-icon">💛</span>
         <h3>Support Our Mission</h3>
         <p>Your contribution directly funds peacebuilding advocacy, security risk management for humanitarian organizations, and education programs advancing human rights worldwide.</p>
-        <a href="#" class="btn-white">Donate Now</a>
+        <a href="https://www.paypal.com/donate/?hosted_button_id=N48F8784BCPEE" class="btn-white">Donate Now</a>
       </div>
       <div class="involve-card">
         <span class="involve-icon">📬</span>
         <h3>Stay Informed</h3>
         <p>Subscribe to our strategic briefs, analytic reports, research publications, and Flashpoints &amp; Frameworks editorial series covering global security, conflict, and governance dynamics.</p>
-        <a href="#" class="btn-white">Subscribe</a>
+        <a href="https://newsletter.arac-international.org/subscribe" class="btn-white">Subscribe</a>
       </div>
     </div>
   </div>
@@ -1966,28 +2035,46 @@
     <div class="partners-label">Affiliations &amp; Partners</div>
     <div class="partners-logos">
       <div class="partner-item">
-        <div class="partner-icon">IEP</div>
-        <div class="partner-name">IEP Ambassador</div>
+        <a href="https://www.economicsandpeace.org/training/iep-ambassador-program/" target="_blank" rel="noopener">
+          <div class="partner-icon">IEP</div>
+          <div class="partner-name">IEP Ambassador</div>
+        </a>
       </div>
       <div class="partner-item">
-        <div class="partner-icon">INSSA</div>
-        <div class="partner-name">INSSA</div>
+        <a href="https://inssa.org/about-us/" target="_blank" rel="noopener">
+          <div class="partner-icon" style="font-size:0.6rem;">INSSA</div>
+          <div class="partner-name">INSSA</div>
+        </a>
       </div>
       <div class="partner-item">
-        <div class="partner-icon">IOSI</div>
-        <div class="partner-name">IOSI Global</div>
+        <a href="https://iosi.global" target="_blank" rel="noopener">
+          <div class="partner-icon">IOSI</div>
+          <div class="partner-name">IOSI Global</div>
+        </a>
       </div>
       <div class="partner-item">
-        <div class="partner-icon" style="font-size:0.6rem;">USIDR</div>
-        <div class="partner-name">US Inst. Diplomacy</div>
+        <a href="https://usidhr.org/" target="_blank" rel="noopener">
+          <div class="partner-icon" style="font-size:0.6rem;">USIDHR</div>
+          <div class="partner-name">US Inst. Diplomacy &amp; Human Rights</div>
+        </a>
       </div>
       <div class="partner-item">
-        <div class="partner-icon">LBS</div>
-        <div class="partner-name">Lladner Business Solutions</div>
+        <a href="http://www.lladner.com/about.html" target="_blank" rel="noopener">
+          <div class="partner-icon">LBS</div>
+          <div class="partner-name">Lladner Business Solutions</div>
+        </a>
       </div>
       <div class="partner-item">
-        <div class="partner-icon">MNS</div>
-        <div class="partner-name">MNS Consulting</div>
+        <a href="https://mnshakoor.com" target="_blank" rel="noopener">
+          <div class="partner-icon">MNS</div>
+          <div class="partner-name">MNS Consulting</div>
+        </a>
+      </div>
+      <div class="partner-item">
+        <a href="https://quanta-analytica.com" target="_blank" rel="noopener">
+          <div class="partner-icon">QA</div>
+          <div class="partner-name">Quanta Analytica</div>
+        </a>
       </div>
     </div>
   </div>
@@ -2021,22 +2108,24 @@
     <div class="footer-col">
       <h5>Programs</h5>
       <ul>
-        <li><a href="#">SDG 16 Advocacy</a></li>
-        <li><a href="#">Conflict Prevention</a></li>
-        <li><a href="#">Humanitarian Support</a></li>
-        <li><a href="#">Continuing Education</a></li>
-        <li><a href="#">Security Risk Management</a></li>
+        <li><a href="programs/sdg-16-advocacy.html">SDG 16 Advocacy &amp; Consulting</a></li>
+        <li><a href="programs/conflict-prevention.html">Conflict Prevention &amp; Mediation</a></li>
+        <li><a href="programs/continuing-education.html">Continuing Education</a></li>
+        <li><a href="programs/humanitarian-support.html">Humanitarian Support</a></li>
+        <li><a href="programs/safety-security-risk-management.html">Safety &amp; Security Risk Management</a></li>
+        <li><a href="programs/research-analysis.html">Research &amp; Analysis</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
       <h5>Organization</h5>
       <ul>
-        <li><a href="#">About ARAC</a></li>
-        <li><a href="#">Our Team</a></li>
-        <li><a href="#">Partners</a></li>
-        <li><a href="#">Research &amp; Reports</a></li>
-        <li><a href="#">Press</a></li>
+        <li><a href="https://global.arac-international.org/about">About ARAC</a></li>
+        <li><a href="https://discover.arac-international.org/information">Learn More</a></li>
+        <li><a href="https://iosi.global">IOSI Global</a></li>
+        <li><a href="http://www.lladner.com/about.html">Lladner Business Solutions</a></li>
+        <li><a href="https://quanta-analytica.com">Quanta Analytica</a></li>
+        <li><a href="https://mnshakoor.com">MNS Consulting</a></li>
       </ul>
     </div>
 
@@ -2044,21 +2133,21 @@
       <h5>Get Involved</h5>
       <ul>
         <li><a href="https://www.paypal.com/donate/?hosted_button_id=N48F8784BCPEE">Donate</a></li>
-        <li><a href="#">Partner With Us</a></li>
-        <li><a href="https://newsletter.arac-international.org">Subscribe</a></li>
-        <li><a href="#">Volunteer</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li><a href="mailto:info@arac-international.org">Partner With Us</a></li>
+        <li><a href="https://newsletter.arac-international.org/subscribe">Subscribe</a></li>
+        <li><a href="mailto:info@arac-international.org">Volunteer</a></li>
+        <li><a href="mailto:info@arac-international.org">Contact Us</a></li>
       </ul>
     </div>
   </div>
 
   <div class="footer-bottom" style="max-width:1200px;margin:0 auto;width:100%;">
-    <p>© 2024 ARAC International Inc. All rights reserved. · arac-international.org</p>
+    <p>© 2026 ARAC International Inc. All rights reserved. · arac-international.org · info@arac-international.org · 501(c)(3) Nonprofit</p>
     <div class="footer-social">
-      <a href="#" class="social-btn" title="LinkedIn">in</a>
-      <a href="#" class="social-btn" title="Twitter/X">𝕏</a>
-      <a href="#" class="social-btn" title="Facebook">f</a>
-      <a href="#" class="social-btn" title="Instagram">◎</a>
+      <a href="mailto:info@arac-international.org" class="social-btn" title="Contact ARAC International">&#9993;</a>
+      <a href="https://newsletter.arac-international.org/subscribe" class="social-btn" title="Newsletter">✉</a>
+      <a href="https://discover.arac-international.org/information" class="social-btn" title="Resources">◈</a>
+      <a href="https://global.arac-international.org/about" class="social-btn" title="Mission &amp; Vision">◎</a>
     </div>
   </div>
 </footer>
