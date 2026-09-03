@@ -609,8 +609,10 @@
   }
 
   .mission-img-inner img {
-    width: 200px;
-    height: 200px;
+    width: auto;
+    height: auto;
+    max-width: 78%;
+    max-height: 72%;
     object-fit: contain;
     filter: drop-shadow(0 8px 24px rgba(0,0,0,0.15));
   }
@@ -638,7 +640,7 @@
 
   .mission-badge {
     position: absolute;
-    bottom: 0;
+    bottom: -0.75rem;
     right: -1rem;
     background: var(--charcoal);
     color: white;
@@ -1505,6 +1507,34 @@
     .partners-logos { grid-template-columns: repeat(4, minmax(0,1fr)); }
   }
 
+  /* Tablet band. The desktop nav wraps badly under about 1024px, so the
+     hamburger and mobile panel take over there rather than at 768px. The
+     two-column content grids stack in the same band. */
+  @media (max-width: 1024px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+
+    .mission-grid,
+    .impact-grid,
+    .peace-content,
+    .humanitarian-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+    .mission-visual { width: 100%; max-width: 520px; justify-self: center; padding-bottom: 0; }
+    .mission-img-wrap { padding-top: 62%; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .involve-cards { grid-template-columns: 1fr 1fr; }
+    .mission-badge {
+      position: static;
+      bottom: auto;
+      right: auto;
+      margin: 1.25rem auto 0;
+      width: max-content;
+      max-width: 100%;
+      box-shadow: 0 6px 22px rgba(0,0,0,0.22);
+    }
+    .mission-img-inner img { max-width: 74%; max-height: 76%; }
+  }
+
   /* -- THINK INITIATIVE -- */
   .think-section {
     background: var(--charcoal-mid);
@@ -1632,8 +1662,7 @@
     .think-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
     .think-pillars { grid-template-columns: 1fr 1fr !important; }
     .footer-main { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .mission-badge { right: 0.5rem; }
-    .mission-visual { padding-bottom: 2.5rem; }
+    .mission-img-wrap { padding-top: 66%; }
     .peace-diagram { height: 320px; }
     .orbit-2 { width: 280px; height: 280px; }
     .n5,  .n7 { transform: translate(calc(-50% + 110px), calc(-50% - 60px)); }
@@ -1775,7 +1804,7 @@
             <img
               src="https://mnshakoor.github.io/arac-international-main/logos/arac-logo1.jpg"
               alt="ARAC International Inc."
-              style="width:410px;height:410px;object-fit:contain;filter:drop-shadow(0 8px 28px rgba(0,0,0,0.18));"
+              style="filter:drop-shadow(0 8px 28px rgba(0,0,0,0.18));"
               onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'mission-img-fallback\'><div class=\'fallback-name\'>ARAC</div><div class=\'fallback-sub\'>International</div><div style=\'margin-top:0.8rem;font-size:0.7rem;letter-spacing:0.12em;opacity:0.65;text-transform:uppercase;\'>Global Peace · Human Rights · SDGs</div></div>'"
             >
           </div>
