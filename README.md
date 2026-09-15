@@ -20,8 +20,12 @@ The design system draws from ARAC International's existing brand: cream and soft
 arac-international-main/
 ├── index.html                                  # Homepage (self-contained, all CSS and JS inline)
 ├── README.md                                   # This file
+├── robots.txt                                  # Crawler rules for search engines
+├── sitemap.xml                                 # Indexable URL list for search engines
 ├── logos/                                      # Logo and brand image assets
 │   └── arac-logo1.jpg
+├── tools/                                      # Embedded web applications
+│   └── inform-severity-dashboard.html          # ARAC INFORM Severity Dashboard (iframe embed)
 └── programs/                                   # Program detail pages (one file per program)
     ├── sdg-16-advocacy.html                    # Program 01
     ├── conflict-prevention.html                # Program 02
@@ -111,6 +115,40 @@ Upload `index.html` and the `assets/` folder to the `public_html` or `www` direc
 
 ---
 
+## Search Engine Indexing
+
+Two files at the repository root control how search engines crawl and index the site: `robots.txt` and `sitemap.xml`. Both must live at the domain root, so on GitHub Pages that means the repository root, not inside `programs/`.
+
+### robots.txt
+
+Allows all crawlers on all paths and points to the sitemap:
+
+```
+User-agent: *
+Allow: /
+
+Sitemap: https://arac-international.org/sitemap.xml
+```
+
+Verify it is reachable at `https://arac-international.org/robots.txt` after deploying. If it 404s, GitHub Pages has not picked up the file, or the custom domain is not yet resolving.
+
+### sitemap.xml
+
+Lists the homepage and all six program pages with their canonical `https://arac-international.org/...` URLs, matching the `<link rel="canonical">` tag on each page. `lastmod` should be updated whenever a listed page's content changes materially; `changefreq` and `priority` are advisory hints most crawlers weight lightly, so they do not need frequent upkeep. When a new page is added to `programs/`, add a matching `<url>` block here at the same time, or search engines will find it only by following the link from the homepage or another page.
+
+### Submitting to Google
+
+1. In [Google Search Console](https://search.google.com/search-console), add `arac-international.org` as a property and verify ownership (DNS TXT record is usually simplest for a custom domain).
+2. Under **Sitemaps**, submit `sitemap.xml`.
+3. Under **URL Inspection**, request indexing for the homepage and, optionally, each program page, to speed up initial crawl rather than waiting for Google to discover them on its own.
+4. Re-submit the sitemap (or request indexing on the specific page) after any significant content change; Google recrawls on its own schedule otherwise, which can take days to weeks for a low-traffic new site.
+
+### THINK is a separate property
+
+`think.arac-international.org` is a distinct subdomain served from its own repository (`mnshakoor/think-site`). Search engines treat subdomains as separate hosts, so this `robots.txt` and `sitemap.xml` do not cover it and cannot list its pages. THINK needs its own `robots.txt`, its own `sitemap.xml`, and its own Google Search Console property and verification.
+
+---
+
 ## Customization
 
 ### Updating Copy
@@ -153,9 +191,35 @@ Six program detail pages are live under `/programs/`. Each carries its own SEO m
 | 05 | Safety & Security Risk Management | `programs/safety-security-risk-management.html` |
 | 06 | Research & Analysis | `programs/research-analysis.html` |
 
+The nav dropdown, mobile panel, and footer Programs column list the six program pages. The INFORM Severity Dashboard under `tools/` is currently reachable from the sitemap and from cross-links on the Safety & Security and Humanitarian program cards on its own page; it is not yet in the site navigation.
+
 ### Language Convention
 
 Public-facing copy on this site uses nonprofit and NGO register throughout. The words *intelligence* and *tradecraft* are deliberately not used anywhere in site copy. Program 05 is titled **Safety & Security Risk Management** and Program 06 is titled **Research & Analysis**. Analytical method is described as *structured research* or *structured analysis*, with the Quanta Analytica process referenced as an analytical practice rather than as an intelligence function.
+
+---
+
+## Tools
+
+Pages under `tools/` embed externally hosted ARAC web applications inside the site design system, so a visitor stays on `arac-international.org` while using them.
+
+| Page | Embeds | File |
+|---|---|---|
+| ARAC INFORM Severity Dashboard | `https://arac-acaps-analytics.nuri-shakoor.workers.dev/` | `tools/inform-severity-dashboard.html` |
+
+### How the embed works
+
+The application is loaded in a full-height `<iframe>` sized with `clamp(560px, calc(100vh - 210px), 1100px)`, so it fills the viewport below the header on a desktop screen and falls back to a fixed height on phones. A loading state sits behind the frame and clears on the iframe's `load` event, with a twelve second ceiling in case that event is missed. A Full Screen button uses the Fullscreen API on the frame wrapper and falls back to opening the application in a new tab where that API is unavailable.
+
+### Before adding another embed
+
+Check that the target application does not send a `X-Frame-Options: DENY` or `SAMEORIGIN` header, and does not set a `Content-Security-Policy` with a restrictive `frame-ancestors` directive. Either one will leave the frame blank with no visible error. Verify with:
+
+```
+curl -sSI <application-url> | grep -iE "x-frame-options|content-security-policy"
+```
+
+The Cloudflare Worker hosting the INFORM Severity Dashboard sends neither header, so it embeds cleanly. If a future application does send them, the page must link out to it instead of framing it.
 
 ---
 

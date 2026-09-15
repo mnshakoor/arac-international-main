@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ARAC INFORM Severity Dashboard | ARAC International Inc.</title>
+<meta name="description" content="The ARAC INFORM Severity Dashboard presents ACAPS INFORM Severity Index data on global humanitarian crises for humanitarian practitioners, researchers, analysts, and NGO safety and security risk management teams.">
+<meta name="keywords" content="INFORM Severity Index, ACAPS, humanitarian crisis severity, humanitarian data, NGO security risk management, crisis analysis, ARAC International, humanitarian dashboard, crisis severity map">
+<meta name="author" content="ARAC International Inc.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="theme-color" content="#8b9a5b">
+<link rel="canonical" href="https://arac-international.org/tools/inform-severity-dashboard.html">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://arac-international.org/tools/inform-severity-dashboard.html">
+<meta property="og:site_name" content="ARAC International Inc.">
+<meta property="og:title" content="ARAC INFORM Severity Dashboard | ARAC International Inc.">
+<meta property="og:description" content="Global humanitarian crisis severity, drawn from the ACAPS INFORM Severity Index, presented for humanitarian practitioners, researchers, analysts, and NGO safety and security teams.">
+<meta property="og:image" content="https://mnshakoor.github.io/arac-international-main/logos/arac-logo1.jpg">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@ARACInternational">
+<meta name="twitter:title" content="ARAC INFORM Severity Dashboard">
+<meta name="twitter:description" content="Global humanitarian crisis severity from the ACAPS INFORM Severity Index, for humanitarian, research, and NGO security risk management use.">
+<meta name="twitter:image" content="https://mnshakoor.github.io/arac-international-main/logos/arac-logo1.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ARAC INFORM Severity Dashboard",
+  "url": "https://arac-international.org/tools/inform-severity-dashboard.html",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web browser",
+  "browserRequirements": "Requires JavaScript",
+  "description": "A web dashboard presenting ACAPS INFORM Severity Index data on the severity of humanitarian crises worldwide, built for humanitarian practitioners, researchers, analysts, and NGO safety and security risk management teams.",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "creator": {
+    "@type": "Person",
+    "name": "M. Nuri Shakoor",
+    "jobTitle": "Founder and Senior Research Analyst",
+    "url": "https://mnshakoor.com"
+  },
+  "publisher": {
+    "@type": "NGO",
+    "name": "ARAC International Inc.",
+    "url": "https://arac-international.org",
+    "nonprofitStatus": "Nonprofit501c3"
+  },
+  "isBasedOn": {
+    "@type": "Dataset",
+    "name": "INFORM Severity Index",
+    "creator": { "@type": "Organization", "name": "ACAPS" },
+    "url": "https://www.acaps.org/en/thematics/all-topics/inform-severity-index"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://arac-international.org/"},
+      {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://arac-international.org/tools/inform-severity-dashboard.html"},
+      {"@type": "ListItem", "position": 3, "name": "ARAC INFORM Severity Dashboard"}
+    ]
+  }
+}
+</script>
+
+<link rel="icon" type="image/png" href="https://mnshakoor.github.io/arac-international-main/logos/arac-logo1.jpg">
+<link rel="apple-touch-icon" href="https://mnshakoor.github.io/arac-international-main/logos/arac-logo1.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://arac-acaps-analytics.nuri-shakoor.workers.dev">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f4e8;
+    --cream-light: #fafaf0;
+    --sage: #8b9a5b;
+    --sage-dark: #6b7a3e;
+    --sage-mid: #9aaa68;
+    --sage-muted: #b8c485;
+    --sage-bg: #a8b870;
+    --olive: #7a8c4a;
+    --olive-light: #c8d48a;
+    --charcoal: #2a2a22;
+    --charcoal-mid: #3d3d30;
+    --text-dark: #1e1e16;
+    --text-body: #3a3a2e;
+    --text-muted: #6a6a56;
+    --white: #ffffff;
+    --gold-accent: #c8a400;
+    --border-light: rgba(139, 154, 91, 0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--cream-light);
+    color: var(--text-body);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  a { color: var(--sage-dark); }
+
+  /* NAVIGATION */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(42, 42, 34, 0.96);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(139, 154, 91, 0.3);
+    padding: 0 2.5rem; height: 70px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+  .nav-logo-img {
+    width: 44px; height: 44px; border-radius: 50%; object-fit: contain;
+    background: white; padding: 3px; display: block; flex-shrink: 0;
+  }
+  .nav-brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .nav-brand-name {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.15rem;
+    font-weight: 600; color: var(--white); letter-spacing: 0.02em;
+  }
+  .nav-brand-tagline {
+    font-size: 0.6rem; font-weight: 300; color: var(--sage-muted);
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
+  .nav-links a, .nav-dropdown > span {
+    display: block; padding: 0.5rem 0.85rem; font-size: 0.8rem; font-weight: 500;
+    color: rgba(255,255,255,0.82); text-decoration: none; letter-spacing: 0.06em;
+    text-transform: uppercase; border-radius: 4px; transition: all 0.2s; cursor: pointer;
+  }
+  .nav-links a:hover, .nav-dropdown > span:hover { color: var(--white); background: rgba(139,154,91,0.2); }
+  .nav-dropdown { position: relative; }
+  .nav-dropdown > span { display: flex; align-items: center; gap: 0.3rem; }
+  .nav-dropdown > span::after { content: '\25be'; font-size: 0.65rem; opacity: 0.7; }
+  .dropdown-menu {
+    display: none; position: absolute; top: calc(100% + 8px); left: 0;
+    background: var(--charcoal); border: 1px solid rgba(139,154,91,0.25);
+    border-radius: 6px; min-width: 268px; overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4); z-index: 100;
+  }
+  .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu { display: block; }
+  .dropdown-menu a {
+    display: block; padding: 0.65rem 1.1rem; font-size: 0.78rem;
+    color: rgba(255,255,255,0.78); text-decoration: none; letter-spacing: 0.04em;
+    text-transform: none; border-radius: 0; transition: all 0.2s;
+  }
+  .dropdown-menu a:hover { background: rgba(139,154,91,0.2); color: var(--white); }
+  .dropdown-menu a.is-current { background: rgba(139,154,91,0.28); color: var(--white); }
+  .dropdown-divider { height: 1px; background: rgba(139,154,91,0.22); margin: 0.25rem 0; }
+  .nav-cta {
+    background: var(--sage) !important; color: white !important;
+    border-radius: 4px !important; padding: 0.5rem 1.1rem !important;
+  }
+  .nav-cta:hover { background: var(--sage-dark) !important; }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: 0; }
+  .nav-hamburger span { display: block; width: 24px; height: 2px; background: white; border-radius: 2px; transition: all 0.3s; }
+
+  /* MOBILE PANEL */
+  .mobile-panel {
+    display: none; position: fixed; top: 70px; left: 0; right: 0; z-index: 999;
+    background: var(--charcoal); border-bottom: 1px solid rgba(139,154,91,0.3);
+    padding: 1rem 1.5rem 1.75rem; max-height: calc(100vh - 70px); overflow-y: auto;
+  }
+  .mobile-panel.open { display: block; }
+  .mobile-panel a {
+    display: block; padding: 0.7rem 0.25rem; color: rgba(255,255,255,0.8);
+    text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .mobile-panel a:hover { color: var(--white); }
+  .mobile-panel .mp-label {
+    font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--sage-muted); padding: 1rem 0.25rem 0.35rem; display: block;
+  }
+  .mobile-panel .mp-sub { padding-left: 1rem; font-size: 0.85rem; }
+
+  section[id], .section { scroll-margin-top: 86px; }
+
+  /* PAGE HERO */
+  .page-hero {
+    background: var(--charcoal); position: relative; overflow: hidden;
+    padding: 9.5rem 2.5rem 5.5rem;
+  }
+  .page-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(139,154,91,0.14) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 60% at 15% 85%, rgba(168,184,112,0.09) 0%, transparent 60%);
+  }
+  .page-hero-inner { position: relative; z-index: 2; max-width: 1000px; margin: 0 auto; }
+  .breadcrumb {
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--sage-muted); margin-bottom: 1.5rem;
+  }
+  .breadcrumb a { color: var(--sage-muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--white); }
+  .breadcrumb span { opacity: 0.45; margin: 0 0.5rem; }
+  .page-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.72rem;
+    font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--sage-muted); margin-bottom: 1.2rem;
+  }
+  .page-eyebrow::before { content: ''; display: block; width: 28px; height: 1.5px; background: var(--sage); }
+  .page-title {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300;
+    font-size: clamp(2.3rem, 5.4vw, 3.7rem); line-height: 1.08;
+    color: var(--white); letter-spacing: -0.01em; margin-bottom: 1.4rem;
+  }
+  .page-title em { font-style: italic; color: var(--sage-muted); }
+  .page-lead {
+    font-size: 1.06rem; font-weight: 300; color: rgba(255,255,255,0.78);
+    max-width: 680px; line-height: 1.75;
+  }
+  .page-hero-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2.2rem; }
+
+  /* BUTTONS */
+  .btn-primary, .btn-outline, .btn-white, .btn-ghost {
+    display: inline-block; padding: 0.85rem 1.7rem; font-size: 0.78rem;
+    font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; border-radius: 4px; transition: all 0.25s; cursor: pointer;
+  }
+  .btn-primary { background: var(--sage); color: var(--white); border: 1px solid var(--sage); }
+  .btn-primary:hover { background: var(--sage-dark); border-color: var(--sage-dark); }
+  .btn-outline { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.35); }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+  .btn-white { background: var(--white); color: var(--charcoal); border: 1px solid var(--white); }
+  .btn-white:hover { background: var(--cream); }
+  .btn-ghost { background: transparent; color: var(--sage-dark); border: 1px solid var(--sage); }
+  .btn-ghost:hover { background: var(--sage); color: var(--white); }
+
+  /* SECTIONS */
+  .section { padding: 5rem 2.5rem; }
+  .section-alt { background: var(--cream); }
+  .section-inner { max-width: 1000px; margin: 0 auto; }
+  .section-inner-wide { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    display: flex; align-items: center; gap: 0.7rem; font-size: 0.7rem;
+    font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--sage-dark); margin-bottom: 1rem;
+  }
+  .section-label::before { content: ''; display: block; width: 20px; height: 1.5px; background: var(--sage); }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300;
+    font-size: clamp(1.85rem, 3.6vw, 2.6rem); line-height: 1.15;
+    color: var(--text-dark); margin-bottom: 1.3rem;
+  }
+  h3.block-title {
+    font-family: 'Cormorant Garamond', serif; font-weight: 600;
+    font-size: 1.35rem; color: var(--text-dark); margin-bottom: 0.6rem;
+  }
+  .prose p { font-size: 1rem; line-height: 1.85; color: var(--text-body); margin-bottom: 1.15rem; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { color: var(--text-dark); font-weight: 600; }
+
+  /* CARD GRIDS */
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .card {
+    background: var(--white); border: 1px solid var(--border-light);
+    border-radius: 8px; padding: 1.9rem 1.7rem; transition: all 0.25s; position: relative;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(42,42,34,0.09); border-color: var(--sage); }
+  .card-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 0.95rem;
+    color: var(--sage); letter-spacing: 0.1em; margin-bottom: 0.7rem;
+  }
+  .card h4 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 1.2rem;
+    color: var(--text-dark); margin-bottom: 0.55rem; line-height: 1.25;
+  }
+  .card p { font-size: 0.9rem; line-height: 1.7; color: var(--text-muted); }
+
+  /* CHECK LIST */
+  .check-list { list-style: none; display: grid; gap: 0.85rem; }
+  .check-list li {
+    position: relative; padding-left: 1.9rem; font-size: 0.96rem;
+    line-height: 1.7; color: var(--text-body);
+  }
+  .check-list li::before {
+    content: ''; position: absolute; left: 0; top: 0.55rem;
+    width: 9px; height: 9px; border-radius: 2px;
+    background: var(--sage); transform: rotate(45deg);
+  }
+  .check-list li strong { color: var(--text-dark); font-weight: 600; }
+
+  /* NUMBERED STEPS */
+  .steps { display: grid; gap: 1.1rem; counter-reset: step; }
+  .step {
+    display: grid; grid-template-columns: 46px 1fr; gap: 1.1rem;
+    align-items: start; background: var(--white); border: 1px solid var(--border-light);
+    border-left: 3px solid var(--sage); border-radius: 6px; padding: 1.35rem 1.5rem;
+  }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;
+    color: var(--sage); line-height: 1;
+  }
+  .step h4 { font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.3rem; }
+  .step p { font-size: 0.92rem; line-height: 1.7; color: var(--text-muted); }
+
+  /* PULL PANEL */
+  .panel {
+    background: var(--charcoal-mid); border-radius: 10px;
+    padding: 2.4rem 2.2rem; color: rgba(255,255,255,0.82);
+  }
+  .panel h3 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400;
+    font-size: 1.6rem; color: var(--white); margin-bottom: 0.9rem;
+  }
+  .panel p { font-size: 0.95rem; line-height: 1.8; margin-bottom: 1rem; }
+  .panel p:last-child { margin-bottom: 0; }
+  .panel a { color: var(--olive-light); }
+
+  /* NOTE */
+  .note {
+    border-left: 3px solid var(--sage); background: rgba(139,154,91,0.07);
+    padding: 1.2rem 1.4rem; border-radius: 0 6px 6px 0;
+    font-size: 0.93rem; line-height: 1.75; color: var(--text-body);
+  }
+
+  /* LINK ROW */
+  .link-row { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.6rem; }
+  .link-chip {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.6rem 1.1rem; border: 1px solid var(--border-light);
+    background: var(--white); border-radius: 100px; font-size: 0.82rem;
+    color: var(--text-body); text-decoration: none; transition: all 0.2s;
+  }
+  .link-chip:hover { border-color: var(--sage); background: var(--sage); color: var(--white); }
+  .link-chip::after { content: '\2197'; font-size: 0.75rem; opacity: 0.6; }
+
+  /* CTA BAND */
+  .cta-band { background: var(--sage-bg); padding: 4.5rem 2.5rem; text-align: center; }
+  .cta-band h2 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300;
+    font-size: clamp(1.9rem, 4vw, 2.6rem); color: var(--white); margin-bottom: 1rem;
+  }
+  .cta-band p {
+    color: rgba(255,255,255,0.9); max-width: 620px; margin: 0 auto 2rem;
+    font-size: 1rem; line-height: 1.75;
+  }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; }
+
+  /* PROGRAM PAGER */
+  .pager { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .pager a {
+    display: block; padding: 1.3rem 1.4rem; background: var(--white);
+    border: 1px solid var(--border-light); border-radius: 6px;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .pager a:hover { border-color: var(--sage); transform: translateY(-2px); }
+  .pager .pg-label {
+    font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--sage-dark); display: block; margin-bottom: 0.4rem;
+  }
+  .pager .pg-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.05rem;
+    font-weight: 600; color: var(--text-dark);
+  }
+
+  /* FOOTER */
+  footer { background: var(--charcoal); color: rgba(255,255,255,0.6); padding: 4rem 2.5rem 0; }
+  .footer-main {
+    max-width: 1200px; margin: 0 auto; display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem;
+  }
+  .footer-brand p { font-size: 0.86rem; line-height: 1.8; margin-top: 1.1rem; max-width: 330px; }
+  .footer-col h5 {
+    font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--sage-muted); margin-bottom: 1.1rem; font-weight: 500;
+  }
+  .footer-col ul { list-style: none; display: grid; gap: 0.65rem; }
+  .footer-col ul a {
+    font-size: 0.86rem; color: rgba(255,255,255,0.55);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: rgba(255,255,255,0.95); }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06); padding: 1.5rem 0;
+    display: flex; justify-content: space-between; align-items: center;
+    max-width: 1200px; margin: 0 auto; width: 100%; gap: 1rem; flex-wrap: wrap;
+  }
+  .footer-bottom p { font-size: 0.72rem; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .page-hero { padding: 7.5rem 1.5rem 4rem; }
+    .section { padding: 3.5rem 1.5rem; }
+    .cta-band { padding: 3.5rem 1.5rem; }
+    .grid-2, .grid-3, .pager { grid-template-columns: 1fr; }
+    .footer-main { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    footer { padding: 3rem 1.5rem 0; }
+    .panel { padding: 1.8rem 1.5rem; }
+  }
+
+  /* ── EMBEDDED APPLICATION ── */
+  .app-bar {
+    background: var(--charcoal);
+    padding: 6rem 2.5rem 1.6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .app-bar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 80% at 75% 30%, rgba(139,154,91,0.15) 0%, transparent 65%);
+  }
+  .app-bar-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 1500px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .app-bar .breadcrumb { margin-bottom: 0.9rem; }
+  .app-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+    line-height: 1.1;
+    color: var(--white);
+    letter-spacing: -0.01em;
+  }
+  .app-title em { font-style: italic; color: var(--sage-muted); }
+  .app-subtitle {
+    font-size: 0.86rem;
+    color: rgba(255,255,255,0.62);
+    margin-top: 0.55rem;
+    max-width: 640px;
+    line-height: 1.65;
+  }
+  .app-bar-actions { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+  .btn-sm {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.6rem 1.1rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.22s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-sm-solid { background: var(--sage); color: var(--white); border: 1px solid var(--sage); }
+  .btn-sm-solid:hover { background: var(--sage-dark); border-color: var(--sage-dark); }
+  .btn-sm-ghost { background: transparent; color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.3); }
+  .btn-sm-ghost:hover { background: rgba(255,255,255,0.12); border-color: var(--white); }
+
+  .app-stage {
+    background: var(--charcoal);
+    padding: 0 2.5rem 2.5rem;
+  }
+  .app-frame-wrap {
+    position: relative;
+    max-width: 1500px;
+    margin: 0 auto;
+    background: var(--cream-light);
+    border: 1px solid rgba(139,154,91,0.35);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    height: clamp(560px, calc(100vh - 210px), 1100px);
+  }
+  .app-frame-wrap:fullscreen { height: 100vh; border-radius: 0; border: 0; max-width: none; }
+  .app-frame-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    background: var(--cream-light);
+  }
+  .app-loading {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: var(--cream-light);
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: opacity 0.4s;
+    z-index: 3;
+  }
+  .app-loading.hidden { opacity: 0; pointer-events: none; }
+  .app-spinner {
+    width: 34px; height: 34px;
+    border: 2px solid rgba(139,154,91,0.25);
+    border-top-color: var(--sage);
+    border-radius: 50%;
+    animation: appspin 0.9s linear infinite;
+  }
+  @keyframes appspin { to { transform: rotate(360deg); } }
+
+  .app-note {
+    max-width: 1500px;
+    margin: 1.1rem auto 0;
+    font-size: 0.76rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .app-note a { color: var(--olive-light); }
+
+  /* ── CREDIT PANEL ── */
+  .credit-panel {
+    background: var(--charcoal-mid);
+    border-radius: 10px;
+    padding: 2.3rem 2.2rem;
+    border-left: 3px solid var(--sage);
+  }
+  .credit-label {
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage-muted);
+    margin-bottom: 1rem;
+  }
+  .credit-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--white);
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 0.3rem;
+  }
+  .credit-role {
+    font-size: 0.85rem;
+    color: var(--olive-light);
+    letter-spacing: 0.03em;
+    margin-bottom: 1.1rem;
+  }
+  .credit-panel p {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.72);
+    margin-bottom: 1rem;
+  }
+  .credit-panel p:last-of-type { margin-bottom: 0; }
+  .credit-panel strong { color: var(--white); font-weight: 600; }
+
+  /* ── SPEC TABLE ── */
+  .spec-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+  .spec-table th, .spec-table td {
+    text-align: left;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    vertical-align: top;
+  }
+  .spec-table th {
+    width: 32%;
+    font-weight: 600;
+    color: var(--text-dark);
+    background: rgba(139,154,91,0.06);
+  }
+  .spec-table td { color: var(--text-body); }
+  .spec-table tr:last-child th, .spec-table tr:last-child td { border-bottom: 0; }
+
+  /* ── SEVERITY SCALE ── */
+  .scale-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; margin-top: 1.5rem; }
+  .scale-step {
+    padding: 0.9rem 0.6rem;
+    border-radius: 6px;
+    text-align: center;
+    color: var(--white);
+  }
+  .scale-step span {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .sc1 { background: #c8d48a; color: var(--text-dark); }
+  .sc2 { background: #a8b870; }
+  .sc3 { background: #8b9a5b; }
+  .sc4 { background: #6b7a3e; }
+  .sc5 { background: #3d4a20; }
+
+  @media (max-width: 1024px) {
+    .app-bar { padding: 5.5rem 1.5rem 1.4rem; }
+    .app-stage { padding: 0 1.5rem 2rem; }
+    .app-bar-inner { align-items: flex-start; }
+    .app-frame-wrap { height: clamp(520px, calc(100vh - 260px), 900px); }
+    .scale-row { grid-template-columns: repeat(2, 1fr); }
+    .spec-table th { width: 40%; }
+  }
+
+  @media (max-width: 768px) {
+    .app-frame-wrap { height: 640px; }
+    .scale-row { grid-template-columns: 1fr; }
+    .spec-table, .spec-table tbody, .spec-table tr, .spec-table th, .spec-table td { display: block; width: 100%; }
+    .spec-table th { border-bottom: 0; padding-bottom: 0.35rem; }
+    .spec-table td { padding-top: 0.2rem; }
+    .credit-panel { padding: 1.7rem 1.4rem; }
+    .app-note { font-size: 0.72rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-brand">
+    <img src="https://mnshakoor.github.io/arac-international-main/logos/arac-logo1.jpg" alt="ARAC International" class="nav-logo-img" onerror="this.style.display='none'">
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">ARAC International</span>
+      <span class="nav-brand-tagline">Global Peace &middot; Human Rights &middot; SDGs</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="https://global.arac-international.org/about">About</a></li>
+    <li class="nav-dropdown">
+      <span tabindex="0">Programs</span>
+      <div class="dropdown-menu">
+        <a href="../programs/sdg-16-advocacy.html">SDG 16 Advocacy &amp; Consulting</a>
+        <a href="../programs/conflict-prevention.html">Conflict Prevention &amp; Mediation</a>
+        <a href="../programs/continuing-education.html">Continuing Education</a>
+        <a href="../programs/humanitarian-support.html">Humanitarian Support</a>
+        <a href="../programs/safety-security-risk-management.html">Safety &amp; Security Risk Management</a>
+        <a href="../programs/research-analysis.html">Research &amp; Analysis</a>
+        <div class="dropdown-divider"></div>
+        <a href="../index.html#services">All Programs Overview</a>
+      </div>
+    </li>
+    <li><a href="../index.html#impact">Our Impact</a></li>
+    <li><a href="https://discover.arac-international.org/information">Resources</a></li>
+    <li><a href="../index.html#involve">Get Involved</a></li>
+    <li><a href="https://www.paypal.com/donate/?hosted_button_id=N48F8784BCPEE" class="nav-cta">Support Us</a></li>
+  </ul>
+
+  <button class="nav-hamburger" aria-label="Menu" aria-expanded="false" onclick="var p=document.getElementById('mobilePanel');var o=p.classList.toggle('open');this.setAttribute('aria-expanded',o);">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-panel" id="mobilePanel">
+  <a href="https://global.arac-international.org/about">About ARAC</a>
+  <span class="mp-label">Programs</span>
+  <a class="mp-sub" href="../programs/sdg-16-advocacy.html">SDG 16 Advocacy &amp; Consulting</a>
+  <a class="mp-sub" href="../programs/conflict-prevention.html">Conflict Prevention &amp; Mediation</a>
+  <a class="mp-sub" href="../programs/continuing-education.html">Continuing Education</a>
+  <a class="mp-sub" href="../programs/humanitarian-support.html">Humanitarian Support</a>
+  <a class="mp-sub" href="../programs/safety-security-risk-management.html">Safety &amp; Security Risk Management</a>
+  <a class="mp-sub" href="../programs/research-analysis.html">Research &amp; Analysis</a>
+  <a class="mp-sub" href="../index.html#services">All Programs Overview</a>
+  <span class="mp-label">More</span>
+  <a href="../index.html#impact">Our Impact</a>
+  <a href="https://discover.arac-international.org/information">Resources</a>
+  <a href="../index.html#involve">Get Involved</a>
+  <a href="https://www.paypal.com/donate/?hosted_button_id=N48F8784BCPEE">Support Us</a>
+</div>
+
+<!-- APPLICATION HEADER -->
+<section class="app-bar">
+  <div class="app-bar-inner">
+    <div>
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a><span>/</span>Tools<span>/</span>INFORM Severity Dashboard
+      </div>
+      <h1 class="app-title">ARAC <em>INFORM Severity</em> Dashboard</h1>
+      <p class="app-subtitle">Global humanitarian crisis severity, drawn from the ACAPS INFORM Severity Index. Compare the scale and severity of crises across countries, and follow how conditions change from month to month.</p>
+    </div>
+    <div class="app-bar-actions">
+      <a class="btn-sm btn-sm-solid" href="https://arac-acaps-analytics.nuri-shakoor.workers.dev/" target="_blank" rel="noopener">Open in New Tab &#8599;</a>
+      <button class="btn-sm btn-sm-ghost" id="fsBtn" type="button">Full Screen</button>
+    </div>
+  </div>
+</section>
+
+<!-- EMBEDDED APPLICATION -->
+<section class="app-stage">
+  <div class="app-frame-wrap" id="frameWrap">
+    <div class="app-loading" id="appLoading">
+      <div class="app-spinner"></div>
+      <div>Loading dashboard</div>
+    </div>
+    <iframe
+      id="appFrame"
+      src="https://arac-acaps-analytics.nuri-shakoor.workers.dev/"
+      title="ARAC INFORM Severity Dashboard"
+      referrerpolicy="no-referrer-when-downgrade"
+      allow="fullscreen; clipboard-write"
+      onload="document.getElementById('appLoading').classList.add('hidden')">
+    </iframe>
+  </div>
+
+  <div class="app-note">
+    <span>The dashboard runs as a separate application. If it does not load in this frame, <a href="https://arac-acaps-analytics.nuri-shakoor.workers.dev/" target="_blank" rel="noopener">open it directly</a>.</span>
+    <span>Data source: <a href="https://www.acaps.org/en/thematics/all-topics/inform-severity-index" target="_blank" rel="noopener">ACAPS INFORM Severity Index</a></span>
+  </div>
+</section>
+
+<!-- ABOUT THE DASHBOARD -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">About This Dashboard</div>
+    <h2 class="section-title">A Common Reference Point for Where Need Is Greatest</h2>
+    <div class="prose">
+      <p>Humanitarian organizations rarely suffer from a shortage of information about crises. What they lack is a way to place crises side by side on a single comparable scale. A country team knows its own operating environment well. What is harder to establish, and what funders and headquarters routinely ask for, is how that environment compares with twenty others competing for the same constrained budget.</p>
+      <p>The ARAC INFORM Severity Dashboard exists to make that comparison straightforward. It presents the ACAPS INFORM Severity Index in an interactive form: a global map of crisis severity, a browsable record for each country, the methodology behind the scoring, and a data status view showing how current the underlying figures are. Records can be filtered by severity category and by the reliability rating attached to each assessment, so a user can see not only what the data says but how much weight it will carry.</p>
+      <p>That last point matters more than it may appear. An analyst who presents a severity figure to a board or a donor will be asked where it came from and how confident anyone is in it. The dashboard is built so that question has an answer on the same screen as the number.</p>
+    </div>
+
+    <div class="scale-row">
+      <div class="scale-step sc1"><span>Very Low</span></div>
+      <div class="scale-step sc2"><span>Low</span></div>
+      <div class="scale-step sc3"><span>Medium</span></div>
+      <div class="scale-step sc4"><span>High</span></div>
+      <div class="scale-step sc5"><span>Very High</span></div>
+    </div>
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:0.9rem;line-height:1.6;">The INFORM Severity Index places each crisis in one of five categories, from very low to very high, on an underlying indicator scale of 0 to 10 in which higher values indicate greater severity.</p>
+  </div>
+</section>
+
+<!-- THE DATA -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <div class="section-label">The Data</div>
+    <h2 class="section-title">ACAPS and the INFORM Severity Index</h2>
+    <div class="prose">
+      <p><strong>ACAPS</strong> is an independent provider of humanitarian analysis. It implements the INFORM Severity Index in collaboration with the European Commission's Joint Research Centre, which leads on methodology development. The index is not a proprietary product of any single agency, and it is published openly, which is why it can serve as shared ground between organizations that otherwise have no common measure.</p>
+      <p>The index is a composite measure. Rather than reducing a crisis to a single reported figure such as casualty counts or displacement totals, it aggregates indicators across three dimensions:</p>
+    </div>
+
+    <div class="grid-3" style="margin-top:2rem;">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h4>Impact of the Crisis</h4>
+        <p>The direct consequences of the event or situation, including its geographic reach, the people affected, and the damage to systems and infrastructure they rely on.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h4>Conditions of People Affected</h4>
+        <p>The state people are actually living in: access to food, water, shelter, health services, education, and protection. This dimension carries the greatest weight in the overall score.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <h4>Complexity of the Crisis</h4>
+        <p>The factors that make a crisis harder to resolve or to operate within, including access constraints, the number of actors involved, and the operating environment for assistance.</p>
+      </div>
+    </div>
+
+    <table class="spec-table">
+      <tr>
+        <th>Producer</th>
+        <td>ACAPS, with methodology developed in collaboration with the European Commission's Joint Research Centre.</td>
+      </tr>
+      <tr>
+        <th>Update cycle</th>
+        <td>Updated monthly, which allows deterioration and improvement to be tracked over time rather than assessed once.</td>
+      </tr>
+      <tr>
+        <th>Inclusion threshold</th>
+        <td>A situation is tracked as a crisis when it affects at least 30,000 people or one percent of the population, or when at least 10,000 people are assessed as needing assistance.</td>
+      </tr>
+      <tr>
+        <th>Institutional use</th>
+        <td>The index informs allocation and categorisation decisions at DG ECHO, at the UN OCHA Central Emergency Response Fund, and within the IFRC crisis categorisation process.</td>
+      </tr>
+      <tr>
+        <th>Supporting sources</th>
+        <td>The dashboard draws on ACAPS INFORM Severity data alongside ACLED conflict event data and Natural Earth administrative boundaries for mapping.</td>
+      </tr>
+    </table>
+
+    <div class="link-row">
+      <a class="link-chip" href="https://www.acaps.org/en/thematics/all-topics/inform-severity-index" target="_blank" rel="noopener">ACAPS INFORM Severity Index</a>
+      <a class="link-chip" href="https://data.humdata.org/dataset/inform-global-crisis-severity-index" target="_blank" rel="noopener">Dataset on HDX</a>
+    </div>
+
+    <div class="note" style="margin-top:2rem;">
+      <strong>On reading the figures responsibly.</strong> A severity score is a structured summary, not a substitute for local knowledge. It is most useful for comparison across crises and for tracking direction of travel over time. Decisions about a specific operation should draw on it alongside field reporting and the judgement of people present in the setting.
+    </div>
+  </div>
+</section>
+
+<!-- WHO USES IT -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Use Cases</div>
+    <h2 class="section-title">Who This Is Built For</h2>
+
+    <div class="steps" style="margin-top:2rem;">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h4>Humanitarian Practitioners</h4>
+          <p>Programme and response teams use comparable severity scoring to support prioritisation between locations, to build the evidence base for a funding proposal, and to show a board or donor why a particular setting warrants attention now. Because the index is updated monthly, it also supports the harder argument: that a situation is deteriorating and should be addressed before it becomes an emergency response.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h4>Researchers and Analysts</h4>
+          <p>A consistent, openly published, monthly time series across crises is unusual and analytically valuable. It supports comparative study of how crises develop, testing of early warning indicators against observed severity, and analysis that can be reproduced and checked by others. The reliability ratings carried alongside each record allow weaker data to be identified rather than quietly averaged in.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h4>NGO Safety and Security Risk Management</h4>
+          <p>Severity and complexity scoring gives security focal points a defensible external reference for the operating environment their people work in. It supports duty of care documentation, informs travel and deployment decisions, and provides a starting point for risk assessment in settings where an organization has no established presence. For a small organization without a dedicated safety function, an open and methodologically transparent source is often the only credible baseline available.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <h4>Funders, Boards, and Coordination Bodies</h4>
+          <p>Allocation decisions are easier to defend when they rest on a measure that applies the same standard to every case and whose method is published. The same figures used by major institutional donors are available here without a subscription or an account.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEVELOPMENT CREDIT -->
+<section class="section section-alt">
+  <div class="section-inner">
+    <div class="section-label">Development</div>
+    <h2 class="section-title">How This Dashboard Was Built</h2>
+
+    <div class="credit-panel" style="margin-top:2rem;">
+      <div class="credit-label">Developed By</div>
+      <div class="credit-name">M. Nuri Shakoor, SRMP-R</div>
+      <div class="credit-role">MNS Consulting &nbsp;|&nbsp; Quanta Analytica</div>
+      <p>This application was designed and developed by <strong>M. Nuri Shakoor, SRMP-R</strong>, through <strong>MNS Consulting</strong> and <strong>Quanta Analytica</strong>, in support of <strong>ARAC International Inc.</strong> and the <strong>Global Development and Risk Management Division of Lladner Business Solutions, LLC</strong>.</p>
+      <p>It is provided as a public good. ARAC International is a 501(c)(3) nonprofit organization, and this dashboard is published without charge, without registration, and without any commercial interest in the data it presents. The underlying index remains the work of ACAPS and its methodological partners, and is presented here with attribution rather than reinterpretation.</p>
+      <div class="link-row" style="margin-top:1.6rem;">
+        <a class="link-chip" style="background:rgba(255,255,255,0.08);color:#fff;border-color:rgba(255,255,255,0.2);" href="https://mnshakoor.com" target="_blank" rel="noopener">mnshakoor.com</a>
+        <a class="link-chip" style="background:rgba(255,255,255,0.08);color:#fff;border-color:rgba(255,255,255,0.2);" href="https://quanta-analytica.com" target="_blank" rel="noopener">quanta-analytica.com</a>
+        <a class="link-chip" style="background:rgba(255,255,255,0.08);color:#fff;border-color:rgba(255,255,255,0.2);" href="http://www.lladner.com/about.html" target="_blank" rel="noopener">lladner.com</a>
+        <a class="link-chip" style="background:rgba(255,255,255,0.08);color:#fff;border-color:rgba(255,255,255,0.2);" href="https://iosi.global" target="_blank" rel="noopener">iosi.global</a>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:2rem;">
+      <div class="card">
+        <h4>Related ARAC Programmes</h4>
+        <p>This tool supports two ARAC programme areas directly. See <a href="../programs/safety-security-risk-management.html">Safety &amp; Security Risk Management</a> for how severity data feeds risk assessment and duty of care work, and <a href="../programs/humanitarian-support.html">Humanitarian Support</a> for technical support to organizations operating in these settings.</p>
+      </div>
+      <div class="card">
+        <h4>Research and Analysis</h4>
+        <p>Our <a href="../programs/research-analysis.html">Research &amp; Analysis</a> programme produces country and regional assessments that draw on sources of this kind. Every judgement we publish carries its evidence and a stated confidence level, so that readers can check the reasoning rather than take it on trust.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band">
+  <h2>Support Open Humanitarian Analysis</h2>
+  <p>ARAC International is a 501(c)(3) nonprofit organization. Contributions fund tools like this one, technical support to humanitarian partners, and education programmes advancing human rights worldwide.</p>
+  <div class="cta-actions">
+    <a href="https://www.paypal.com/donate/?hosted_button_id=N48F8784BCPEE" class="btn-white">Donate</a>
+    <a href="mailto:info@arac-international.org" class="btn-outline">Partner With Us</a>
+    <a href="https://newsletter.arac-international.org/subscribe" class="btn-outline">Subscribe</a>
+    <a href="https://global.arac-international.org/about" class="btn-outline">Mission &amp; Vision</a>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-main">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:0.85rem;">
+        <img src="https://mnshakoor.github.io/arac-international-main/logos/arac-logo1.jpg" alt="ARAC International" style="width:52px;height:52px;border-radius:50%;object-fit:contain;background:white;padding:4px;flex-shrink:0;" onerror="this.style.display='none'">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:white;">ARAC International</div>
+          <div style="font-size:0.62rem;letter-spacing:0.12em;color:var(--sage-muted);text-transform:uppercase;">Global Peace &middot; Human Rights &middot; SDGs</div>
+        </div>
+      </div>
+      <p>A 501(c)(3) nonprofit organization dedicated to advocating for global security, human rights, and peacebuilding. We work to foster a safer and more just world through the advancement of Positive Peace.</p>
+      <div class="link-row" style="margin-top:1.4rem;">
+        <a class="link-chip" style="background:transparent;color:rgba(255,255,255,0.75);border-color:rgba(255,255,255,0.18);" href="https://global.arac-international.org/about">Mission &amp; Vision</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h5>Programs</h5>
+      <ul>
+        <li><a href="../programs/sdg-16-advocacy.html">SDG 16 Advocacy &amp; Consulting</a></li>
+        <li><a href="../programs/conflict-prevention.html">Conflict Prevention &amp; Mediation</a></li>
+        <li><a href="../programs/continuing-education.html">Continuing Education</a></li>
+        <li><a href="../programs/humanitarian-support.html">Humanitarian Support</a></li>
+        <li><a href="../programs/safety-security-risk-management.html">Safety &amp; Security Risk Management</a></li>
+        <li><a href="../programs/research-analysis.html">Research &amp; Analysis</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5>Organization</h5>
+      <ul>
+        <li><a href="https://global.arac-international.org/about">About ARAC</a></li>
+        <li><a href="https://discover.arac-international.org/information">Learn More</a></li>
+        <li><a href="https://iosi.global">IOSI Global</a></li>
+        <li><a href="http://www.lladner.com/about.html">Lladner Business Solutions</a></li>
+        <li><a href="https://quanta-analytica.com">Quanta Analytica</a></li>
+        <li><a href="https://mnshakoor.com">MNS Consulting</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h5>Get Involved</h5>
+      <ul>
+        <li><a href="https://www.paypal.com/donate/?hosted_button_id=N48F8784BCPEE">Donate</a></li>
+        <li><a href="mailto:info@arac-international.org">Partner With Us</a></li>
+        <li><a href="https://newsletter.arac-international.org/subscribe">Subscribe</a></li>
+        <li><a href="mailto:info@arac-international.org">Volunteer</a></li>
+        <li><a href="mailto:info@arac-international.org">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 ARAC International Inc. All rights reserved. &middot; arac-international.org &middot; info@arac-international.org</p>
+    <p style="color:rgba(255,255,255,0.35);">501(c)(3) Nonprofit Organization</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var wrap = document.getElementById('frameWrap');
+  var btn = document.getElementById('fsBtn');
+  var loading = document.getElementById('appLoading');
+  var frame = document.getElementById('appFrame');
+
+  // Some browsers fire load before the handler attaches; clear after a ceiling either way.
+  setTimeout(function () { loading.classList.add('hidden'); }, 12000);
+  if (frame.complete) { loading.classList.add('hidden'); }
+
+  function fsElement() {
+    return document.fullscreenElement || document.webkitFullscreenElement || null;
+  }
+
+  btn.addEventListener('click', function () {
+    if (fsElement()) {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    } else if (wrap.requestFullscreen || wrap.webkitRequestFullscreen) {
+      (wrap.requestFullscreen || wrap.webkitRequestFullscreen).call(wrap);
+    } else {
+      window.open('https://arac-acaps-analytics.nuri-shakoor.workers.dev/', '_blank', 'noopener');
+    }
+  });
+
+  function syncLabel() {
+    btn.textContent = fsElement() ? 'Exit Full Screen' : 'Full Screen';
+  }
+  document.addEventListener('fullscreenchange', syncLabel);
+  document.addEventListener('webkitfullscreenchange', syncLabel);
+})();
+</script>
+
+</body>
+</html>
