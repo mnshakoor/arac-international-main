@@ -26,8 +26,13 @@ arac-international-main/
 │   └── arac-logo1.jpg
 ├── tools/                                      # Embedded web applications
 │   └── inform-severity-dashboard.html          # ARAC INFORM Severity Dashboard (iframe embed)
-├── stratcom/                                   # Field analysis framework documents
-│   └── index.html                              # Covering & Monitoring High-Risk Events and Political Protests
+├── stratcom/                                   # STRATCOM: public communications hub
+│   ├── index.html                              # STRATCOM hub (Research, Analysis, Alerts, Community News, SitReps, Frameworks)
+│   ├── assets/
+│   │   └── ooda-risk-unga81-thumb.jpg          # Shared thumbnail / OG image for the OODA-Risk framework
+│   └── frameworks/                             # Field analysis & risk-assessment framework documents
+│       ├── index.html                          # Frameworks hub
+│       └── ooda-risk-unga81-casestudy.html     # Covering & Monitoring High-Risk Events and Political Protests
 └── programs/                                   # Program detail pages (one file per program)
     ├── sdg-16-advocacy.html                    # Program 01
     ├── conflict-prevention.html                # Program 02
@@ -227,17 +232,33 @@ The Cloudflare Worker hosting the INFORM Severity Dashboard sends neither header
 
 ## STRATCOM
 
-`stratcom/` is a home for field-analysis and risk-assessment framework documents published in web form, alongside the report-style PDF/DOCX originals. Each entry is a long-form, single-file article page reusing the site design system, with an in-page table of contents, data tables, and inline SVG figures rather than embedded images, so the page stays self-contained.
+`stratcom/` is ARAC's public communications hub: a home for research, analysis, alerts, local community news and events, SitRep updates (produced with Quanta Analytica, Lladner Business Solutions, and IOSI Global), and field-analysis frameworks. It has its own two-tier structure, each tier with its own `index.html`, full site navigation, header, and SEO metadata:
+
+```
+stratcom/index.html                              STRATCOM hub — all six content areas
+stratcom/frameworks/index.html                    Frameworks hub — lists every framework document
+stratcom/frameworks/ooda-risk-unga81-casestudy.html   the first framework document
+```
+
+`stratcom/index.html` is a card-grid landing page for the six content areas (Research, Analysis, Alerts, Local Community News & Events, SitRep Updates, Frameworks) plus a "Latest Framework" spotlight. Only **Frameworks** is live and clickable today; the other five are marked "Coming Soon" with a short description rather than linked to a page that does not exist yet — update a card to `hub-card is-live` and add its `href` once that content area has a real page to point to.
+
+`stratcom/frameworks/index.html` lists every framework document as a card: title, author byline, one-line description, thumbnail, and a link to the full page. Add a new `.fw-card` block here whenever a framework document is published.
+
+Each individual framework document (e.g. `ooda-risk-unga81-casestudy.html`) is a long-form, single-file article page reusing the site design system, with an in-page table of contents, data tables, and inline SVG figures rather than embedded images, so the page stays self-contained apart from its shared thumbnail.
 
 | Page | Author | File |
 |---|---|---|
-| Covering & Monitoring High-Risk Events and Political Protests (OODA-Risk framework) | M. Nuri Shakoor, SRMP-R | `stratcom/index.html` |
+| Covering & Monitoring High-Risk Events and Political Protests (OODA-Risk framework) | M. Nuri Shakoor, SRMP-R | `stratcom/frameworks/ooda-risk-unga81-casestudy.html` |
+
+### Thumbnail / OG image
+
+`stratcom/assets/ooda-risk-unga81-thumb.jpg` is a 1200×630 card rendered from the framework's own OODA-Risk diagram (dark navy/gold/charcoal, matching the diagram inside the page). It is used three ways: the card image on the Frameworks hub, the feature image on the STRATCOM hub, and the `og:image`/`twitter:image` for the framework page itself. A new framework document should get its own thumbnail in the same folder and the same 1200×630 size, so hub cards stay visually consistent; card images use `object-fit: contain` against the card's dark background rather than `cover`, so a differently-proportioned thumbnail won't cut off text at the edges.
 
 ### SEO and authorship
 
-STRATCOM pages are built for search visibility and carry `Article` Schema.org markup (not `WebPage`) so the author is machine-readable: a `Person` node with name, credential, and a link to `mnshakoor.com`, plus `datePublished`, `articleSection`, and `keywords`. The `<meta name="author">` tag and Open Graph `article:author` property carry the same byline. A visible byline row (author, affiliation, publish date, read time) sits under the hero, and an "About the Author" panel near the foot of the page repeats the credential and links out to the author's and partners' sites, consistent with the site's citation and traceability standard.
+Framework documents carry `Article` Schema.org markup (not `WebPage`) so the author is machine-readable: a `Person` node with name, credential, and a link to `mnshakoor.com`, plus `datePublished`, `articleSection`, and `keywords`. The `<meta name="author">` tag and Open Graph `article:author` property carry the same byline. A visible byline row (author, affiliation, publish date, read time) sits under the hero, and an "About the Author" panel near the foot of the page repeats the credential and links out to the author's and partners' sites. The two hub pages carry `CollectionPage` Schema.org markup with a `BreadcrumbList` instead, since they are index pages rather than authored articles.
 
-Like the program pages, STRATCOM pages are reachable from the sitemap and from cross-links on their own page; they are not yet in the site navigation (nav dropdown, mobile panel, footer columns).
+Like the program pages, STRATCOM pages are reachable from the sitemap and from cross-links on their own pages; they are not yet in the site's main navigation (nav dropdown, mobile panel, footer columns).
 
 ---
 
