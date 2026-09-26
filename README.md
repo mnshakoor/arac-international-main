@@ -26,6 +26,8 @@ arac-international-main/
 │   └── arac-logo1.jpg
 ├── tools/                                      # Embedded web applications
 │   └── inform-severity-dashboard.html          # ARAC INFORM Severity Dashboard (iframe embed)
+├── stratcom/                                   # Field analysis framework documents
+│   └── index.html                              # Covering & Monitoring High-Risk Events and Political Protests
 └── programs/                                   # Program detail pages (one file per program)
     ├── sdg-16-advocacy.html                    # Program 01
     ├── conflict-prevention.html                # Program 02
@@ -220,6 +222,22 @@ curl -sSI <application-url> | grep -iE "x-frame-options|content-security-policy"
 ```
 
 The Cloudflare Worker hosting the INFORM Severity Dashboard sends neither header, so it embeds cleanly. If a future application does send them, the page must link out to it instead of framing it.
+
+---
+
+## STRATCOM
+
+`stratcom/` is a home for field-analysis and risk-assessment framework documents published in web form, alongside the report-style PDF/DOCX originals. Each entry is a long-form, single-file article page reusing the site design system, with an in-page table of contents, data tables, and inline SVG figures rather than embedded images, so the page stays self-contained.
+
+| Page | Author | File |
+|---|---|---|
+| Covering & Monitoring High-Risk Events and Political Protests (OODA-Risk framework) | M. Nuri Shakoor, SRMP-R | `stratcom/index.html` |
+
+### SEO and authorship
+
+STRATCOM pages are built for search visibility and carry `Article` Schema.org markup (not `WebPage`) so the author is machine-readable: a `Person` node with name, credential, and a link to `mnshakoor.com`, plus `datePublished`, `articleSection`, and `keywords`. The `<meta name="author">` tag and Open Graph `article:author` property carry the same byline. A visible byline row (author, affiliation, publish date, read time) sits under the hero, and an "About the Author" panel near the foot of the page repeats the credential and links out to the author's and partners' sites, consistent with the site's citation and traceability standard.
+
+Like the program pages, STRATCOM pages are reachable from the sitemap and from cross-links on their own page; they are not yet in the site navigation (nav dropdown, mobile panel, footer columns).
 
 ---
 
