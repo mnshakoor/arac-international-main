@@ -30,9 +30,14 @@ arac-international-main/
 │   ├── index.html                              # STRATCOM hub (Research, Analysis, Alerts, Community News, SitReps, Frameworks)
 │   ├── assets/
 │   │   └── ooda-risk-unga81-thumb.jpg          # Shared thumbnail / OG image for the OODA-Risk framework
-│   └── frameworks/                             # Field analysis & risk-assessment framework documents
-│       ├── index.html                          # Frameworks hub
-│       └── ooda-risk-unga81-casestudy.html     # Covering & Monitoring High-Risk Events and Political Protests
+│   ├── frameworks/                             # Field analysis & risk-assessment framework documents
+│   │   ├── index.html                          # Frameworks hub
+│   │   └── ooda-risk-unga81-casestudy.html     # Covering & Monitoring High-Risk Events and Political Protests
+│   └── reports/                                # Field-evidence reports and situational analysis
+│       ├── index.html                          # Reports hub
+│       └── unga81/                             # One directory per report, own index.html + assets/
+│           ├── index.html                      # UNGA 81 Field Report
+│           └── assets/                         # Report-specific photos, video-contact-sheet stills, OG thumbnail
 └── programs/                                   # Program detail pages (one file per program)
     ├── sdg-16-advocacy.html                    # Program 01
     ├── conflict-prevention.html                # Program 02
@@ -232,15 +237,17 @@ The Cloudflare Worker hosting the INFORM Severity Dashboard sends neither header
 
 ## STRATCOM
 
-`stratcom/` is ARAC's public communications hub: a home for research, analysis, alerts, local community news and events, SitRep updates (produced with Quanta Analytica, Lladner Business Solutions, and IOSI Global), and field-analysis frameworks. It has its own two-tier structure, each tier with its own `index.html`, full site navigation, header, and SEO metadata:
+`stratcom/` is ARAC's public communications hub: a home for research, analysis, alerts, local community news and events, SitRep updates (produced with Quanta Analytica, Lladner Business Solutions, and IOSI Global), and field-analysis frameworks. Two content areas now have their own sub-hub, each with its own `index.html`, full site navigation, header, and SEO metadata:
 
 ```
-stratcom/index.html                              STRATCOM hub — all six content areas
-stratcom/frameworks/index.html                    Frameworks hub — lists every framework document
-stratcom/frameworks/ooda-risk-unga81-casestudy.html   the first framework document
+stratcom/index.html                                    STRATCOM hub — all six content areas
+stratcom/frameworks/index.html                          Frameworks hub — lists every framework document
+stratcom/frameworks/ooda-risk-unga81-casestudy.html         the first framework document
+stratcom/reports/index.html                             Reports hub — lists every field report
+stratcom/reports/unga81/index.html                          the first field report, with its own assets/ folder
 ```
 
-`stratcom/index.html` is a card-grid landing page for the six content areas (Research, Analysis, Alerts, Local Community News & Events, SitRep Updates, Frameworks) plus a "Latest Framework" spotlight. Only **Frameworks** is live and clickable today; the other five are marked "Coming Soon" with a short description rather than linked to a page that does not exist yet — update a card to `hub-card is-live` and add its `href` once that content area has a real page to point to.
+`stratcom/index.html` is a card-grid landing page for the six content areas (Research, Analysis, Alerts, Local Community News & Events, SitRep Updates, Frameworks). **Frameworks** and **Analysis** (which links to the Reports hub) are live and clickable today; the remaining four are marked "Coming Soon" with a short description rather than linked to a page that does not exist yet — update a card to `hub-card is-live` and add its `href` once that content area has a real page to point to.
 
 `stratcom/frameworks/index.html` lists every framework document as a card: title, author byline, one-line description, thumbnail, and a link to the full page. Add a new `.fw-card` block here whenever a framework document is published.
 
@@ -250,13 +257,25 @@ Each individual framework document (e.g. `ooda-risk-unga81-casestudy.html`) is a
 |---|---|---|
 | Covering & Monitoring High-Risk Events and Political Protests (OODA-Risk framework) | M. Nuri Shakoor, SRMP-R | `stratcom/frameworks/ooda-risk-unga81-casestudy.html` |
 
+### Reports
+
+`stratcom/reports/index.html` follows the same hub pattern as Frameworks, but each report gets its **own directory** rather than a single flat file, because reports carry a set of photo (and sometimes video-contact-sheet) evidence images that belong with that report specifically: `stratcom/reports/<report-slug>/index.html` plus `stratcom/reports/<report-slug>/assets/`. To publish a new report, add a directory following that pattern, list it as a `.fw-card` on the Reports hub, and add its two URLs (the report and, if useful, its section anchors) to `sitemap.xml`.
+
+Report pages carry `Article` Schema.org markup like framework documents, reuse the same `case-card`, `gallery-grid`, and `video-embed` patterns for presenting photo and YouTube evidence, and follow the same evidentiary discipline as the source field notes: protest signage and verbal claims are captioned as protesters' claims, not verified fact, and any account drawn only from handwritten field notes (rather than photo or video) is explicitly flagged as such.
+
+| Page | Author | File |
+|---|---|---|
+| UNGA 81 Field Report: Diaspora Protest Mobilization in New York City | M. Nuri Shakoor, SRMP-R | `stratcom/reports/unga81/index.html` |
+
 ### Thumbnail / OG image
 
 `stratcom/assets/ooda-risk-unga81-thumb.jpg` is a 1200×630 card rendered from the framework's own OODA-Risk diagram (dark navy/gold/charcoal, matching the diagram inside the page). It is used three ways: the card image on the Frameworks hub, the feature image on the STRATCOM hub, and the `og:image`/`twitter:image` for the framework page itself. A new framework document should get its own thumbnail in the same folder and the same 1200×630 size, so hub cards stay visually consistent; card images use `object-fit: contain` against the card's dark background rather than `cover`, so a differently-proportioned thumbnail won't cut off text at the edges.
 
+Reports work a little differently: `stratcom/reports/<report-slug>/assets/<slug>-og-thumb.jpg` is a 1200×630 crop taken directly from one of the report's own field photographs (via `object-fit: cover` centered crop) rather than a designed graphic, since the point of a field report is the documentary photo itself. It is used as the Reports hub card image and as the report page's own `og:image`/`twitter:image`.
+
 ### SEO and authorship
 
-Framework documents carry `Article` Schema.org markup (not `WebPage`) so the author is machine-readable: a `Person` node with name, credential, and a link to `mnshakoor.com`, plus `datePublished`, `articleSection`, and `keywords`. The `<meta name="author">` tag and Open Graph `article:author` property carry the same byline. A visible byline row (author, affiliation, publish date, read time) sits under the hero, and an "About the Author" panel near the foot of the page repeats the credential and links out to the author's and partners' sites. The two hub pages carry `CollectionPage` Schema.org markup with a `BreadcrumbList` instead, since they are index pages rather than authored articles.
+Framework and report documents carry `Article` Schema.org markup (not `WebPage`) so the author is machine-readable: a `Person` node with name, credential, and a link to `mnshakoor.com`, plus `datePublished`, `articleSection`, and `keywords`. The `<meta name="author">` tag and Open Graph `article:author` property carry the same byline. A visible byline row (author, affiliation, publish date, read time) sits under the hero, and an "About the Author" panel near the foot of the page repeats the credential and links out to the author's and partners' sites. The hub pages (STRATCOM, Frameworks, Reports) carry `CollectionPage` Schema.org markup with a `BreadcrumbList` instead, since they are index pages rather than authored articles.
 
 Like the program pages, STRATCOM pages are reachable from the sitemap and from cross-links on their own pages; they are not yet in the site's main navigation (nav dropdown, mobile panel, footer columns).
 
